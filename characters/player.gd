@@ -1,0 +1,163 @@
+extends CharacterBody2D
+
+enum{
+	move,
+	idle,
+	attack_1,
+	attack_2,
+	attack_3,
+	block,
+	death,
+	hurt,
+	jump
+}
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+const SPEED = 120.0
+const JUMP_VELOCITY = -400.0
+
+@onready var anim = $AnimatedSprite2D
+@onready var anim_player = $AnimationPlayer
+
+var health = 100
+var state = move
+var run_speed = 1
+var combo = false
+var cooldown = false
+
+
+
+func _physics_process(delta):
+	match state:
+		move:
+			move_state()
+		attack_1:
+			attack1_state()
+		attack_2:
+			attack2_state()
+		attack_3:
+			attack3_state()			
+		block:
+			block_state()
+		death:
+			death_state()
+		hurt:
+			hurt_state()
+		jump:
+			jump_state()			
+	# Add the gravity.
+	
+	if not is_on_floor():
+		velocity.y += gravity * delta
+	
+	
+	if health <= 0:
+		health = 0
+		anim_player.play("death")
+		await anim_player.animation_finished
+		queue_free() 		
+		get_tree().change_scene_to_file("res://menu.tscn")
+		
+	move_and_slide()
+
+	# Handle jump.
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+		state = jump
+func move_state():
+		var direction = Input.get_axis("left", "right")
+		if direction:
+			velocity.x = direction * SPEED * run_speed
+			if velocity.y == 0:
+				if run_speed == 1:
+					anim_player.play("walk")
+				else:
+					anim_player.play("run")
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)				
+			if velocity.y == 0:
+				anim_player.play("idle")
+		if direction == -1:
+			anim.flip_h = true
+			
+		elif direction == 1:
+			anim.flip_h = false
+		if Input.is_action_pressed("run"):
+			run_speed = 2
+		else:
+			run_speed = 1
+		if Input.is_action_pressed("block"):
+			if velocity.x == 0:
+				state = block
+		if Input.is_action_just_pressed("attack") and not cooldown:
+			state = attack_1	
+func block_state():
+	velocity.x = 0
+	anim_player.play("block")
+	if Input.is_action_just_released("block"):
+		state = move
+func attack1_state():
+	if Input.is_action_just_pressed("attack") and combo:
+		state = attack_2
+	velocity.x = 0
+	anim_player.play("attack_1")
+	await anim_player.animation_finished
+	attack_freeze()
+	state = move			
+func attack2_state():
+	if Input.is_action_just_pressed("attack") and combo:
+		state = attack_3 
+	anim_player.play("attack_2")
+	await anim_player.animation_finished
+	state = move
+func attack3_state():
+	anim_player.play("attack_3")
+	await anim_player.animation_finished
+	state = move 
+func combo1():
+	combo = true
+	await anim_player.animation_finished
+	combo = false
+func combo1_state():
+	if Input.is_action_just_pressed("attack") and combo:
+		state = combo2
+	anim.play("attack_2")
+	await anim_player.animation_finished
+	state = move	
+func combo2():
+	combo = true
+	await anim_player.animation_finished
+	combo = false
+func combo2_state():
+	if $AnimatedSprite2D.flip_h:
+		velocity.x = -30
+	else:
+		velocity.x = 30
+	anim.play("attack_3")
+	await anim_player.animation_finished
+	state = move	
+func attack_freeze():
+	cooldown = true
+	await get_tree().create_timer(0.5).timeout
+	cooldown = false
+func death_state():
+	velocity.x = 0
+	anim.play("death")
+	await anim_player.animation_finished
+	queue_free()
+	get_tree().change_scene_to_file("res://scenes/menu.tscn")
+func hurt_state():
+	velocity.x = 0
+	anim.play("hurt")
+	await anim_player.animation_finished
+	state = move
+func jump_state():
+	if velocity.y < 0:
+		if anim_player.current_animation != "jump":
+			anim_player.play("jump")
+
+	elif velocity.y > 0:
+		if anim_player.current_animation != "fall":
+			anim_player.play("fall")
+
+	if is_on_floor():
+		state = move

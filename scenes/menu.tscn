@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://cyd7bmtpcfeui"]
+
+[ext_resource type="Script" uid="uid://dc65sjtisnsa1" path="res://menu.gd" id="1_lti8b"]
+[ext_resource type="PackedScene" uid="uid://cnfep31ru5lq2" path="res://scenes/parallax_background.tscn" id="2_vjb58"]
+
+[node name="Menu" type="Node2D" unique_id=743229812]
+script = ExtResource("1_lti8b")
+
+[node name="play_button" type="Button" parent="." unique_id=38831438]
+offset_left = 412.0
+offset_top = 213.0
+offset_right = 761.0
+offset_bottom = 302.0
+theme_override_font_sizes/font_size = 32
+text = "Начать игру"
+
+[node name="quit_button" type="Button" parent="." unique_id=114195945]
+offset_left = 411.0
+offset_top = 454.0
+offset_right = 764.0
+offset_bottom = 548.0
+theme_override_font_sizes/font_size = 32
+text = "Выйти"
+
+[node name="ParallaxBackground" parent="." unique_id=755746550 instance=ExtResource("2_vjb58")]
+
+[connection signal="pressed" from="play_button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="quit_button" to="." method="_on_quit_button_pressed"]
