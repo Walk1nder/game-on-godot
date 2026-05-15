@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://2vuugxf4im7r"]
+
+[ext_resource type="Texture2D" uid="uid://bd48bdqtiyt46" path="res://assets/GandalfHardcore Archer/arrow.png" id="1_a5mqx"]
+[ext_resource type="Script" uid="uid://cd56ksqdtvk8q" path="res://scenes_objects/arrow.gd" id="1_ybpji"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ybpji"]
+size = Vector2(6, 6)
+
+[node name="Arrow" type="Area2D" unique_id=788633017]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_ybpji")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=320028951]
+texture = ExtResource("1_a5mqx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1186312093]
+position = Vector2(12, 0)
+shape = SubResource("RectangleShape2D_ybpji")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=727189749]
+position = Vector2(1, 0)
+rect = Rect2(-16, -3, 30, 6)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

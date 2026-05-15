@@ -817,7 +817,9 @@ _data = {
 &"walk": SubResource("Animation_svrv0")
 }
 
-[node name="player" type="CharacterBody2D" unique_id=621955716]
+[node name="player" type="CharacterBody2D" unique_id=621955716 groups=["player"]]
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_q605b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1593452852]
@@ -827,10 +829,10 @@ shape = SubResource("CapsuleShape2D_sh265")
 position = Vector2(2, -23)
 scale = Vector2(0.93749994, 0.93749994)
 sprite_frames = SubResource("SpriteFrames_tjqan")
-animation = &"run"
+animation = &"hurt"
 autoplay = "idle"
-frame = 4
-frame_progress = 0.8930092
+frame = 1
+frame_progress = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=352222914]
 zoom = Vector2(1.8, 1.8)
