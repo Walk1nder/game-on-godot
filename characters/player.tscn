@@ -820,6 +820,8 @@ _data = {
 [node name="player" type="CharacterBody2D" unique_id=621955716 groups=["player"]]
 collision_layer = 2
 collision_mask = 5
+floor_max_angle = 1.0471976
+floor_snap_length = 8.0
 script = ExtResource("1_q605b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1593452852]
@@ -829,17 +831,16 @@ shape = SubResource("CapsuleShape2D_sh265")
 position = Vector2(2, -23)
 scale = Vector2(0.93749994, 0.93749994)
 sprite_frames = SubResource("SpriteFrames_tjqan")
-animation = &"hurt"
+animation = &"attack_1"
 autoplay = "idle"
-frame = 1
-frame_progress = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=352222914]
-zoom = Vector2(1.8, 1.8)
+zoom = Vector2(1.5, 1.5)
 process_callback = 0
-limit_left = -5000
-limit_right = 5000
-limit_bottom = 80
+limit_left = 0
+limit_top = 200
+limit_right = 15000
+limit_bottom = 720
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 
