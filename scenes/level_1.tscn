@@ -1109,51 +1109,51 @@ sources/14 = SubResource("TileSetAtlasSource_isj1j")
 layer = -1
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1485652725]
-scale = Vector2(0.5, 0.5)
-motion_mirroring = Vector2(3540, 0)
+motion_scale = Vector2(0.1, 0)
+motion_mirroring = Vector2(816, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=1288462026]
 modulate = Color(0.6431373, 1, 1, 1)
-position = Vector2(761.8499, 320.00003)
-scale = Vector2(6.5093737, 6.509374)
+position = Vector2(0, -75)
+scale = Vector2(3, 3)
 texture = ExtResource("10_7gny6")
 centered = false
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1893827217]
-scale = Vector2(0.5, 0.5)
-motion_mirroring = Vector2(3540, 0)
+motion_scale = Vector2(0.2, 0)
+motion_mirroring = Vector2(816, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" unique_id=1920174954]
 modulate = Color(0.8901961, 1, 1, 1)
-position = Vector2(761.75006, 319.99997)
-scale = Vector2(6.5361347, 6.5343747)
+position = Vector2(0, -75)
+scale = Vector2(3.001, 3)
 texture = ExtResource("11_2aecg")
 centered = false
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1314814904]
-scale = Vector2(0.5, 0.5)
-motion_mirroring = Vector2(3540, 0)
+motion_scale = Vector2(0.5, 0)
+motion_mirroring = Vector2(816, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3" unique_id=214905241]
 modulate = Color(0.6, 1, 1, 1)
-position = Vector2(759.09985, 320)
-scale = Vector2(6.5187483, 6.5187497)
+position = Vector2(0, -75)
+scale = Vector2(3, 3)
 texture = ExtResource("12_6dial")
 centered = false
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground" unique_id=956458799]
-scale = Vector2(0.5, 0.5)
-motion_mirroring = Vector2(3540, 0)
+motion_scale = Vector2(1, 0)
+motion_mirroring = Vector2(816, 0)
 
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4" unique_id=540707899]
 modulate = Color(0.81960785, 1, 0.9019608, 1)
-position = Vector2(747.10004, 320)
-scale = Vector2(6.5187483, 6.5187488)
+position = Vector2(0, -75)
+scale = Vector2(3, 3)
 texture = ExtResource("13_7nomh")
 centered = false
 
 [node name="TileMap" type="TileMap" parent="." unique_id=1414604897]
-position = Vector2(1006, 655)
+position = Vector2(672, 655)
 tile_set = SubResource("TileSet_4nkto")
 format = 2
 layer_0/name = "бэк"
@@ -1167,7 +1167,7 @@ layer_3/name = "вкрапления"
 layer_3/tile_data = PackedInt32Array(5, 3, 0, 65541, 3, 1, 131077, 3, 2, 196613, 3, 3, 262149, 3, 4, 327685, 3, 5, 393221, 3, 6, 458757, 3, 7, 6, 65539, 0, 65542, 65539, 1, 131078, 65539, 2, 196614, 65539, 3, 262150, 65539, 4, 327686, 65539, 5, 393222, 65539, 6, 458758, 65539, 7, 7, 131075, 0, 65543, 131075, 1, 131079, 131075, 2, 196615, 131075, 3, 262151, 131075, 4, 327687, 131075, 5, 393223, 131075, 6, 458759, 131075, 7, 8, 196611, 0, 65544, 196611, 1, 131080, 196611, 2, 196616, 196611, 3, 262152, 196611, 4, 327688, 196611, 5, 393224, 196611, 6, 458760, 196611, 7, 9, 262147, 0, 65545, 262147, 1, 131081, 262147, 2, 196617, 262147, 3, 262153, 262147, 4, 327689, 262147, 5, 393225, 262147, 6, 458761, 262147, 7, 65546, 327683, 1, 131082, 327683, 2, 196618, 327683, 3, 262154, 327683, 4, 327690, 327683, 5, 393226, 327683, 6, 262155, 393219, 4)
 
 [node name="player" parent="." unique_id=621955716 instance=ExtResource("2_rus8k")]
-position = Vector2(803, 609)
+position = Vector2(199, 597)
 
 [node name="Mobs" type="Node2D" parent="." unique_id=315020551]
 
