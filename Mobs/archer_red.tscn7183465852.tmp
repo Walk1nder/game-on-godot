@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://2vuugxf4im7r" path="res://scenes_objects/arrow.tscn" id="2_3nmna"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3nmna"]
-radius = 17.0
-height = 60.0
+radius = 25.0
+height = 70.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8ytkq"]
 atlas = ExtResource("1_711gg")
@@ -428,9 +428,6 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_3nmna"]
 radius = 309.85965
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_hvekq"]
-radius = 19.026299
-
 [node name="Archer_red" type="CharacterBody2D" unique_id=2042170383]
 collision_layer = 4
 collision_mask = 3
@@ -444,8 +441,9 @@ shape = SubResource("CapsuleShape2D_3nmna")
 position = Vector2(11, -16)
 scale = Vector2(1.5937502, 1.59375)
 sprite_frames = SubResource("SpriteFrames_8ytkq")
-animation = &"idle"
+animation = &"attack"
 autoplay = "idle"
+frame = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1089870330]
 libraries/ = SubResource("AnimationLibrary_avd8q")
@@ -465,19 +463,9 @@ visible = false
 position = Vector2(0, -7)
 shape = SubResource("CircleShape2D_3nmna")
 
-[node name="DamageBox" type="Node2D" parent="AttackDirection" unique_id=776846091]
-
-[node name="HurtBox" type="Area2D" parent="AttackDirection/DamageBox" unique_id=1516321001]
-collision_layer = 32
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackDirection/DamageBox/HurtBox" unique_id=1230999938]
-shape = SubResource("CircleShape2D_hvekq")
-
 [node name="AttackCooldown" type="Timer" parent="." unique_id=314878591]
 one_shot = true
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="AttackDirection/DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="AttackDirection/DetectionArea" to="." method="_on_detection_area_body_exited"]
-[connection signal="area_entered" from="AttackDirection/DamageBox/HurtBox" to="." method="_on_hurt_box_area_entered"]

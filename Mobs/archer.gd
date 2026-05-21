@@ -1,73 +1,140 @@
 extends CharacterBody2D
 
-# Перетаскиваем сцену стрелы (arrow.tscn) из файловой системы в это поле в Инспекторе
-@export var arrow_scene: PackedScene 
+enum {
+	IDLE,
+	CHASE,
+	DEATH # 1. Добавили новое состояние смерти
+}
 
+@export var arrow_scene: PackedScene 
+@onready var cooldown_timer = $AttackCooldown
 @onready var animPlayer = $AnimationPlayer
 @onready var shoot_point = $ShootPoint
-@onready var sprite = $AnimatedSprite2D # Учтено твое название узла!
+@onready var sprite = $AnimatedSprite2D
 
+var target_player: Node2D = null
 var facing_right = true
-var player_in_range = false # Видит ли лучник игрока?
-var is_attacking = false    # Атакует ли он прямо сейчас?
+var player_in_range = false
+var is_attacking = false   
+var player: Vector2         
+var direction: Vector2      
+
+var state: int = IDLE       
+
+# 2. Добавили здоровье лучнику
+var health: int = 50 # Можешь изменить значение
 
 func _ready():
-	# Принудительно запускаем idle при старте игры
 	animPlayer.play("idle")
 	print("Лучник появился, запущен idle")
+	Signals.player_position_update.connect(Callable(self, "_on_player_position_update"))
 
 func _physics_process(_delta):
-	# Если игрок в зоне видимости и лучник сейчас НЕ атакует — начинаем атаку
-	if player_in_range and not is_attacking:
+	# 3. Если мертв - выходим из функции, чтобы он перестал ходить и стрелять
+	if state == DEATH:
+		return
+
+	if player_in_range and not is_attacking and cooldown_timer.is_stopped():
 		start_attack()
+		
+	match state:
+		IDLE:
+			if player_in_range and target_player:
+				state = CHASE
+		CHASE:
+			chase_state()
+			if not player_in_range:
+				state = IDLE
+			
+func _on_player_position_update(player_pos):
+	player = player_pos
 
 func start_attack():
 	is_attacking = true
-	animPlayer.play("attack") # Запускаем анимацию
+	animPlayer.play("attack") 
 	print("Начата анимация атаки!")
 
-# Эта функция всё так же вызывается из AnimationPlayer (Call Method Track)
 func fire_arrow():
-	print("Функция fire_arrow вызвана!") # Проверка вызова
-	if arrow_scene:
+	if arrow_scene and target_player:
 		var arrow = arrow_scene.instantiate()
 		arrow.global_position = shoot_point.global_position
-
-		if facing_right:
-			arrow.direction = Vector2.RIGHT
-			arrow.scale.x = 1
-		else:
-			arrow.direction = Vector2.LEFT
-			arrow.scale.x = -1
-
+		var direction_to_player = shoot_point.global_position.direction_to(target_player.global_position)
+		arrow.direction = direction_to_player
+		arrow.rotation = direction_to_player.angle() 
 		get_tree().current_scene.add_child(arrow)
-		print("Стрела заспавнена!")
-	else:
-		print("ОШИБКА: В инспектор не добавлена сцена стрелы!")
 
-# СИГНАЛ: Игрок вошел в зону видимости
 func _on_detection_area_body_entered(body):
-	print("В зону вошел: ", body.name) # Смотрим, кого вообще видит лучник
-	
-	# Надежная проверка: проверяем, состоит ли вошедший объект в группе "player"
+	print("В зону вошел: ", body.name)
 	if body.is_in_group("player"): 
 		player_in_range = true
+		target_player = body
 		print("Это игрок! Начинаем стрельбу.")
+		state = CHASE
 
-# СИГНАЛ: Игрок вышел из зоны видимости
 func _on_detection_area_body_exited(body):
 	if body.is_in_group("player"):
 		player_in_range = false
+		target_player = null
 		print("Игрок ушел из зоны!")
+		state = IDLE
 
-# СИГНАЛ: Анимация завершилась
 func _on_animation_player_animation_finished(anim_name):
+	# Не запускаем таймеры и не меняем состояния, если лучник уже умирает
+	if state == DEATH:
+		return
+
 	if anim_name == "attack":
-		# Лучник закончил выстрел, снимаем флаг атаки
 		is_attacking = false
+		cooldown_timer.start() 
 		print("Анимация атаки закончилась")
 
-		# Если игрок убежал, возвращаемся в покой
 		if not player_in_range:
 			animPlayer.play("idle") 
 			print("Возвращаемся в idle")
+
+func chase_state(): 
+	if player:
+		direction = (player - self.position).normalized()
+		if direction.x < 0:
+			sprite.flip_h = true
+		else:
+			sprite.flip_h = false
+
+# ==========================================
+# НОВЫЙ КОД ДЛЯ ПОЛУЧЕНИЯ УРОНА И СМЕРТИ
+# ==========================================
+
+# 4. Функция получения урона (вызовешь её через сигнал HurtBox)
+func take_damage(damage_amount):
+	# Если уже мертв - игнорируем новые удары
+	if state == DEATH:
+		return
+
+	health -= damage_amount
+	print("Лучник получил урон! Осталось: ", health)
+
+	if health <= 0:
+		health = 0
+		die()
+	else:
+		# Если у лучника есть анимация получения урона, убери знак решетки (#) ниже:
+		animPlayer.play("hurt")
+
+# 5. Функция смерти
+func die():
+	state = DEATH
+	set_physics_process(false) # Останавливаем движение навсегда
+	cooldown_timer.stop() # Останавливаем таймер, чтобы он не выстрелил из могилы
+	is_attacking = false # Прерываем атаку
+	
+	animPlayer.play("death") # Запускаем анимацию смерти
+	await animPlayer.animation_finished # Ждем конца анимации
+	
+	queue_free() # Удаляем лучника с уровня (здесь это безопасно, так как мы не меняем сцену)
+
+
+func _on_hurt_box_area_entered(area):
+	if area.name == "HitBox" or area.is_in_group("player_attacks"):
+		# Предположим, у хитбокса игрока есть переменная damage
+		var damage_from_player = 10 # Или area.damage, если ты настроил это у игрока
+		take_damage(damage_from_player)

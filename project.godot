@@ -15,6 +15,10 @@ run/main_scene="uid://cyd7bmtpcfeui"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Signals="*uid://csiwpbi2i7e2r"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/AS2P/plugin.cfg")
@@ -59,6 +63,8 @@ block={
 2d_physics/layer_1="world"
 2d_physics/layer_2="player"
 2d_physics/layer_3="enemies"
+2d_physics/layer_5="playerHurtBox"
+2d_physics/layer_6="enemyHurtBox"
 
 [physics]
 

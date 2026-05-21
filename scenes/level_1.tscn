@@ -1997,9 +1997,9 @@ layer_5/tile_data = PackedInt32Array(-131098, 9, 5, -65562, 9, 6, -196633, 65545
 
 [node name="player" parent="." unique_id=621955716 instance=ExtResource("2_rus8k")]
 z_index = 1
-position = Vector2(5274, 334)
+position = Vector2(2477, 534)
 
 [node name="Mobs" type="Node2D" parent="." unique_id=315020551]
 
 [node name="Archer_red" parent="Mobs" unique_id=2042170383 instance=ExtResource("9_e3sih")]
-position = Vector2(544, 525)
+position = Vector2(2871, 540)

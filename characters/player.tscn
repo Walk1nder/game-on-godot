@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bmhr8jufl45vj" path="res://assets/Shinobi/Jump.png" id="8_h076o"]
 [ext_resource type="Texture2D" uid="uid://b0xbhytsfd04s" path="res://assets/Shinobi/Run.png" id="9_lcfw7"]
 [ext_resource type="Texture2D" uid="uid://clmc4giub01ff" path="res://assets/Shinobi/Walk.png" id="11_eho78"]
+[ext_resource type="PackedScene" path="res://scenes/damagebox.tscn" id="12_8sqrr"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sh265"]
 radius = 19.0
@@ -474,7 +475,7 @@ animations = [{
 }]
 
 [sub_resource type="Animation" id="Animation_eho78"]
-length = 0.625
+length = 1.1666666
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -817,6 +818,10 @@ _data = {
 &"walk": SubResource("Animation_svrv0")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8sqrr"]
+radius = 14.0
+height = 64.0
+
 [node name="player" type="CharacterBody2D" unique_id=621955716 groups=["player"]]
 collision_layer = 2
 collision_mask = 5
@@ -825,6 +830,7 @@ floor_snap_length = 8.0
 script = ExtResource("1_q605b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1593452852]
+visible = false
 shape = SubResource("CapsuleShape2D_sh265")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=199027034]
@@ -848,3 +854,25 @@ editor_draw_limits = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1890354540]
 libraries/ = SubResource("AnimationLibrary_41yun")
+
+[node name="AttackDirection" type="Node2D" parent="." unique_id=547374730]
+
+[node name="damagebox" parent="AttackDirection" unique_id=1667341648 instance=ExtResource("12_8sqrr")]
+
+[node name="HurtBox" parent="AttackDirection/damagebox" index="0" unique_id=973549057]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" parent="AttackDirection/damagebox/HurtBox" index="0" unique_id=1174217810]
+position = Vector2(3, 1)
+shape = SubResource("CapsuleShape2D_8sqrr")
+
+[node name="HitBox" parent="AttackDirection/damagebox" index="1" unique_id=1719502563]
+position = Vector2(33, 0)
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" parent="AttackDirection/damagebox/HitBox" index="0" unique_id=1164538144]
+position = Vector2(6, -2)
+
+[editable path="AttackDirection/damagebox"]

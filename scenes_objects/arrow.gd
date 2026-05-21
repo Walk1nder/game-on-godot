@@ -4,6 +4,7 @@ extends Area2D
 @export var damage: int = 20     # Урон
 var direction: Vector2 = Vector2.RIGHT # Направление по умолчанию
 
+
 func _physics_process(delta):
 	# Двигаем стрелу каждый кадр
 	position += direction * speed * delta
@@ -21,3 +22,7 @@ func _on_body_entered(body):
 # Если добавил VisibleOnScreenNotifier2D, подключи его сигнал screen_exited
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free() # Удаляем стрелу, если она улетела за экран, чтобы не засорять память
+
+
+func _on_hit_box_area_entered(area: Area2D) -> void:
+	Signals.emit_signal("enemy_attack", damage)

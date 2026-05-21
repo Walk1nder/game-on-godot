@@ -23,8 +23,11 @@ var state = move
 var run_speed = 1
 var combo = false
 var cooldown = false
+var player_pos
 
 
+func _ready():
+	Signals.connect("enemy_attack", Callable (self, "_on_damage_received"))
 
 func _physics_process(delta):
 	match state:
@@ -38,8 +41,6 @@ func _physics_process(delta):
 			attack3_state()			
 		block:
 			block_state()
-		death:
-			death_state()
 		hurt:
 			hurt_state()
 		jump:
@@ -48,14 +49,6 @@ func _physics_process(delta):
 	
 	if not is_on_floor():
 		velocity.y += gravity * delta
-	
-	
-	if health <= 0:
-		health = 0
-		anim_player.play("death")
-		await anim_player.animation_finished
-		queue_free() 		
-		get_tree().change_scene_to_file("res://menu.tscn")
 		
 	move_and_slide()
 
@@ -63,6 +56,10 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		state = jump
+	
+	player_pos = self.position
+	Signals.player_position_update.emit(player_pos)
+
 func move_state():
 		var direction = Input.get_axis("left", "right")
 		if direction:
@@ -141,15 +138,12 @@ func attack_freeze():
 	cooldown = false
 func death_state():
 	velocity.x = 0
-	anim.play("death")
-	await anim_player.animation_finished
-	queue_free()
-	get_tree().change_scene_to_file("res://scenes/menu.tscn")
+	if anim_player.current_animation != "death":
+		anim.play("death")
+		await anim_player.animation_finished
+		get_tree().change_scene_to_file("res://scenes/menu.tscn")
 func hurt_state():
 	velocity.x = 0
-	anim.play("hurt")
-	await anim_player.animation_finished
-	state = move
 func jump_state():
 	if velocity.y < 0:
 		if anim_player.current_animation != "jump":
@@ -160,4 +154,38 @@ func jump_state():
 			anim_player.play("fall")
 
 	if is_on_floor():
+		state = move
+func _on_damage_received(enemy_damage):
+	# Если мы уже мертвы или уже проигрываем анимацию урона - игнорируем новые удары
+	if state == death or state == hurt: 
+		return
+
+	health -= enemy_damage
+	print(health)
+
+	if health <= 0:
+		health = 0
+		die() # Вызываем смерть ОДИН РАЗ
+	else:
+		take_hit() # Вызываем реакцию на урон ОДИН РАЗ
+# Функция смерти (запускается один раз)
+func die():
+	state = death
+	# ОТКЛЮЧАЕМ физику! Персонаж замирает, _physics_process больше не выполняется
+	set_physics_process(false) 
+	velocity = Vector2.ZERO # Полностью останавливаем
+
+	anim_player.play("death")
+	await anim_player.animation_finished
+	
+	get_tree().change_scene_to_file("res://scenes/menu.tscn")
+# Функция получения урона (запускается один раз)
+func take_hit():
+	state = hurt
+	anim_player.play("hurt")
+	await anim_player.animation_finished
+	
+	# После того как анимация проигралась до конца, возвращаемся в движение
+	# Проверяем, не убили ли нас, пока проигрывалась анимация
+	if state != death: 
 		state = move

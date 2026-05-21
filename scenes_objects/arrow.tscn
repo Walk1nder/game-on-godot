@@ -6,6 +6,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ybpji"]
 size = Vector2(6, 6)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ybpji"]
+radius = 4.0
+
 [node name="Arrow" type="Area2D" unique_id=788633017]
 collision_layer = 0
 collision_mask = 2
@@ -22,5 +25,16 @@ shape = SubResource("RectangleShape2D_ybpji")
 position = Vector2(1, 0)
 rect = Rect2(-16, -3, 30, 6)
 
+[node name="DamageBox" type="Node2D" parent="." unique_id=622160733]
+
+[node name="HitBox" type="Area2D" parent="DamageBox" unique_id=47841298]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageBox/HitBox" unique_id=611774298]
+position = Vector2(12, 0)
+shape = SubResource("CircleShape2D_ybpji")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="area_entered" from="DamageBox/HitBox" to="." method="_on_hit_box_area_entered"]
