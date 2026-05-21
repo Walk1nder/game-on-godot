@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bmhr8jufl45vj" path="res://assets/Shinobi/Jump.png" id="8_h076o"]
 [ext_resource type="Texture2D" uid="uid://b0xbhytsfd04s" path="res://assets/Shinobi/Run.png" id="9_lcfw7"]
 [ext_resource type="Texture2D" uid="uid://clmc4giub01ff" path="res://assets/Shinobi/Walk.png" id="11_eho78"]
-[ext_resource type="PackedScene" path="res://scenes/damagebox.tscn" id="12_8sqrr"]
+[ext_resource type="PackedScene" uid="uid://jju1j3l1hr5i" path="res://scenes/damagebox.tscn" id="12_8sqrr"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sh265"]
 radius = 19.0
@@ -845,7 +845,7 @@ zoom = Vector2(1.5, 1.5)
 process_callback = 0
 limit_left = 0
 limit_top = 200
-limit_right = 15000
+limit_right = 7800
 limit_bottom = 700
 limit_smoothed = true
 position_smoothing_enabled = true
