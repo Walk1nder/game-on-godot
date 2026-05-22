@@ -8,3 +8,5 @@ signal player_position_update(position: Vector2)
 # Здесь могут быть другие глобальные сигналы
 # signal another_signal()
 signal enemy_attack (enemy_damage)
+
+signal health_changed(new_health)

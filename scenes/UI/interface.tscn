@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://cebh7evjx8bxo"]
+
+[ext_resource type="Script" uid="uid://cs2mgxldi733" path="res://scenes/UI/player_stats_ui.gd" id="1_nc7fh"]
+[ext_resource type="Texture2D" uid="uid://c0g7ew2my46fa" path="res://assets.textures/GandalfHardcore Hp bar/Hp bar.png" id="1_po50s"]
+[ext_resource type="Texture2D" uid="uid://cdk0jmrrvpi8o" path="res://assets.textures/GandalfHardcore Hp bar/red bar.png" id="2_h5gjf"]
+[ext_resource type="Texture2D" uid="uid://kg75xyvk3lb" path="res://assets.textures/GandalfHardcore Hp bar/Blue bar.png" id="2_p673a"]
+[ext_resource type="Texture2D" uid="uid://b2r2ci43iwn2e" path="res://assets.textures/GandalfHardcore Hp bar/yellow bar.png" id="3_p673a"]
+
+[node name="Interface" type="CanvasLayer" unique_id=60560458]
+
+[node name="PlayerStatsUI" type="Control" parent="." unique_id=454667940]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -40.0
+offset_top = -10.000001
+offset_right = 3.5999985
+offset_bottom = 30.0
+scale = Vector2(2.5, 2.5)
+script = ExtResource("1_nc7fh")
+
+[node name="HealthBar" type="TextureProgressBar" parent="PlayerStatsUI" unique_id=941308311]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 11.0
+offset_right = 141.55072
+offset_bottom = 75.0
+tooltip_text = "
+"
+value = 100.0
+fill_mode = 3
+texture_progress = ExtResource("2_h5gjf")
+texture_progress_offset = Vector2(4.86, 3.15)
+
+[node name="ManaBar" type="TextureProgressBar" parent="PlayerStatsUI" unique_id=937485615]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 13.0
+offset_right = 147.0
+offset_bottom = 77.0
+value = 26.0
+texture_progress = ExtResource("2_p673a")
+texture_progress_offset = Vector2(50.225, 51.165)
+
+[node name="StaminaBar" type="TextureProgressBar" parent="PlayerStatsUI" unique_id=1511192119]
+layout_mode = 0
+offset_left = 84.0
+offset_top = 56.0
+offset_right = 124.0
+offset_bottom = 96.0
+value = 100.0
+texture_progress = ExtResource("3_p673a")
+texture_progress_offset = Vector2(-0.14, 1.015)
+
+[node name="FlaskOverlay" type="TextureRect" parent="PlayerStatsUI" unique_id=779696869]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 10.0
+offset_right = 134.0
+offset_bottom = 74.0
+texture = ExtResource("1_po50s")

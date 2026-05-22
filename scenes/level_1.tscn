@@ -31,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://ckk32hijmnjo1" path="res://assets.textures/textures_1/PNG/Platformer/Spikes2.png" id="23_mbb35"]
 [ext_resource type="Texture2D" uid="uid://dy7q4rftyjqe" path="res://assets.textures/textures_1/PNG/Environment/exit_1_1.png" id="24_hnsmf"]
 [ext_resource type="Texture2D" uid="uid://hh8e6lqrkyft" path="res://assets.textures/textures_1/PNG/Environment/exit_1_2.png" id="26_nossa"]
+[ext_resource type="PackedScene" uid="uid://cebh7evjx8bxo" path="res://scenes/UI/interface.tscn" id="32_nossa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5xbjy"]
 texture = ExtResource("1_bswci")
@@ -2568,3 +2569,7 @@ position = Vector2(424, 468)
 
 [node name="Archer_red" parent="Mobs" unique_id=2042170383 instance=ExtResource("9_e3sih")]
 position = Vector2(2871, 540)
+
+[node name="Interface" parent="." unique_id=60560458 instance=ExtResource("32_nossa")]
+
+[editable path="Interface"]

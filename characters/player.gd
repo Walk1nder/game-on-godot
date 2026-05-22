@@ -22,6 +22,7 @@ const JUMP_VELOCITY = -400.0
 
 var damage_amount = 20
 var health = 100
+var current_health = 100
 var state = move
 var run_speed = 1
 var combo = false
@@ -30,6 +31,7 @@ var player_pos
 
 
 func _ready():
+	Signals.health_changed.emit(current_health)
 	Signals.connect("enemy_attack", Callable (self, "_on_damage_received"))
 	hitbox.get_node("CollisionShape2D").set_deferred("disabled", true)
 
@@ -200,7 +202,17 @@ func _on_hit_box_area_entered(area):
 	# Например, если у хартбокса врага есть метод take_damage
 	if area.has_method("take_damage"):
 		area.take_damage(damage_amount)
+		
 
-	# ИЛИ другой вариант: если хартбокс врага находится в группе "enemy_hurtbox"
-	# elif area.is_in_group("enemy_hurtbox"):
-	#     area.owner.take_damage(damage_amount) # owner обращается к главному скрипту Лучника
+func take_damage(amount):
+	current_health -= amount
+ 
+	if current_health < 0:
+		current_health = 0
+  
+ # Отправляем сигнал
+	Signals.health_changed.emit(current_health)
+
+# 2. Функция для теста по кнопке
+#func _input(event):
+#		take_damage(15) # Вот теперь движок найдет эту команду!
