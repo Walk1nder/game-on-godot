@@ -22,12 +22,13 @@ var direction: Vector2
 var state: int = IDLE       
 
 # 2. Добавили здоровье лучнику
-var health: int = 50 # Можешь изменить значение
+var health: int = 100 # Можешь изменить значение
 
 func _ready():
 	animPlayer.play("idle")
 	print("Лучник появился, запущен idle")
 	Signals.player_position_update.connect(Callable(self, "_on_player_position_update"))
+	
 
 func _physics_process(_delta):
 	# 3. Если мертв - выходим из функции, чтобы он перестал ходить и стрелять
@@ -91,6 +92,12 @@ func _on_animation_player_animation_finished(anim_name):
 		if not player_in_range:
 			animPlayer.play("idle") 
 			print("Возвращаемся в idle")
+	elif anim_name == "hurt":
+		is_attacking = false # Сбрасываем атаку, если его ударили во время выстрела
+		if player_in_range:
+			animPlayer.play("idle") # Возвращаем в стойку
+		else:
+			animPlayer.play("idle")
 
 func chase_state(): 
 	if player:
@@ -100,26 +107,20 @@ func chase_state():
 		else:
 			sprite.flip_h = false
 
-# ==========================================
-# НОВЫЙ КОД ДЛЯ ПОЛУЧЕНИЯ УРОНА И СМЕРТИ
-# ==========================================
 
 # 4. Функция получения урона (вызовешь её через сигнал HurtBox)
 func take_damage(damage_amount):
 	# Если уже мертв - игнорируем новые удары
 	if state == DEATH:
 		return
-
 	health -= damage_amount
 	print("Лучник получил урон! Осталось: ", health)
-
 	if health <= 0:
 		health = 0
 		die()
 	else:
-		# Если у лучника есть анимация получения урона, убери знак решетки (#) ниже:
+		animPlayer.stop()
 		animPlayer.play("hurt")
-
 # 5. Функция смерти
 func die():
 	state = DEATH
@@ -134,7 +135,15 @@ func die():
 
 
 func _on_hurt_box_area_entered(area):
-	if area.name == "HitBox" or area.is_in_group("player_attacks"):
-		# Предположим, у хитбокса игрока есть переменная damage
-		var damage_from_player = 10 # Или area.damage, если ты настроил это у игрока
-		take_damage(damage_from_player)
+	print("Что-то коснулось лучника: ", area.name)
+# area.owner — это главный узел сцены (твоего Игрока), на котором висит скрипт Игрока
+	var attacker = area.owner
+  
+  # Проверяем, существует ли attacker и есть ли внутри его скрипта переменная 'damage_amount'
+	if attacker != null and "damage_amount" in attacker:
+	# Берем урон прямо из скрипта твоего Игрока!
+		take_damage(attacker.damage_amount)
+	
+  # Резервная проверка (если структура сцены чуть другая, сработает по слову damagebox или hitbox)
+	elif "damagebox" in str(area.name).to_lower() or "hitbox" in str(area.name).to_lower():
+		take_damage(20)

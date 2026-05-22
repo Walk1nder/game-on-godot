@@ -444,7 +444,7 @@ shape = SubResource("CapsuleShape2D_3nmna")
 position = Vector2(11, -16)
 scale = Vector2(1.5937502, 1.59375)
 sprite_frames = SubResource("SpriteFrames_8ytkq")
-animation = &"idle"
+animation = &"attack"
 autoplay = "idle"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1089870330]
@@ -469,7 +469,7 @@ shape = SubResource("CircleShape2D_3nmna")
 
 [node name="HurtBox" type="Area2D" parent="AttackDirection/DamageBox" unique_id=1516321001]
 collision_layer = 32
-collision_mask = 0
+collision_mask = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackDirection/DamageBox/HurtBox" unique_id=1230999938]
 shape = SubResource("CircleShape2D_hvekq")

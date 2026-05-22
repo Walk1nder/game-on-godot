@@ -17,7 +17,10 @@ const JUMP_VELOCITY = -400.0
 
 @onready var anim = $AnimatedSprite2D
 @onready var anim_player = $AnimationPlayer
+@onready var hitbox = $AttackDirection/damagebox/HitBox
 
+
+var damage_amount = 20
 var health = 100
 var state = move
 var run_speed = 1
@@ -28,6 +31,7 @@ var player_pos
 
 func _ready():
 	Signals.connect("enemy_attack", Callable (self, "_on_damage_received"))
+	hitbox.get_node("CollisionShape2D").set_deferred("disabled", true)
 
 func _physics_process(delta):
 	match state:
@@ -75,9 +79,11 @@ func move_state():
 				anim_player.play("idle")
 		if direction == -1:
 			anim.flip_h = true
-			
+			hitbox.position.x = -abs(hitbox.position.x)
 		elif direction == 1:
 			anim.flip_h = false
+			hitbox.position.x = abs(hitbox.position.x)
+			
 		if Input.is_action_pressed("run"):
 			run_speed = 2
 		else:
@@ -189,3 +195,12 @@ func take_hit():
 	# Проверяем, не убили ли нас, пока проигрывалась анимация
 	if state != death: 
 		state = move
+func _on_hit_box_area_entered(area):
+	# Проверяем, есть ли у области, в которую мы попали, принадлежность к врагу
+	# Например, если у хартбокса врага есть метод take_damage
+	if area.has_method("take_damage"):
+		area.take_damage(damage_amount)
+
+	# ИЛИ другой вариант: если хартбокс врага находится в группе "enemy_hurtbox"
+	# elif area.is_in_group("enemy_hurtbox"):
+	#     area.owner.take_damage(damage_amount) # owner обращается к главному скрипту Лучника
