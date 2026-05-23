@@ -475,7 +475,7 @@ animations = [{
 }]
 
 [sub_resource type="Animation" id="Animation_4rspn"]
-length = 0.001
+length = 8.433333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -871,7 +871,7 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8sqrr"]
-radius = 14.0
+radius = 16.0
 height = 64.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hsn1j"]
@@ -891,7 +891,7 @@ shape = SubResource("CapsuleShape2D_sh265")
 position = Vector2(2, -23)
 scale = Vector2(0.93749994, 0.93749994)
 sprite_frames = SubResource("SpriteFrames_tjqan")
-animation = &"attack_2"
+animation = &"death"
 autoplay = "idle"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=352222914]

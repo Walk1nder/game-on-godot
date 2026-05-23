@@ -144,12 +144,6 @@ func attack_freeze():
 	cooldown = true
 	await get_tree().create_timer(0.5).timeout
 	cooldown = false
-func death_state():
-	velocity.x = 0
-	if anim_player.current_animation != "death":
-		anim.play("death")
-		await anim_player.animation_finished
-		get_tree().change_scene_to_file("res://scenes/menu.tscn")
 func hurt_state():
 	velocity.x = 0
 func jump_state():
@@ -163,30 +157,11 @@ func jump_state():
 
 	if is_on_floor():
 		state = move
-func _on_damage_received(enemy_damage):
+
 	# Если мы уже мертвы или уже проигрываем анимацию урона - игнорируем новые удары
 	if state == death or state == hurt: 
 		return
 
-	health -= enemy_damage
-	print(health)
-
-	if health <= 0:
-		health = 0
-		die() # Вызываем смерть ОДИН РАЗ
-	else:
-		take_hit() # Вызываем реакцию на урон ОДИН РАЗ
-# Функция смерти (запускается один раз)
-func die():
-	state = death
-	# ОТКЛЮЧАЕМ физику! Персонаж замирает, _physics_process больше не выполняется
-	set_physics_process(false) 
-	velocity = Vector2.ZERO # Полностью останавливаем
-
-	anim_player.play("death")
-	await anim_player.animation_finished
-	
-	get_tree().change_scene_to_file("res://scenes/menu.tscn")
 # Функция получения урона (запускается один раз)
 func take_hit():
 	state = hurt
@@ -202,17 +177,45 @@ func _on_hit_box_area_entered(area):
 	# Например, если у хартбокса врага есть метод take_damage
 	if area.has_method("take_damage"):
 		area.take_damage(damage_amount)
-		
-
-func take_damage(amount):
-	current_health -= amount
- 
-	if current_health < 0:
-		current_health = 0
-  
- # Отправляем сигнал
-	Signals.health_changed.emit(current_health)
-
 # 2. Функция для теста по кнопке
 #func _input(event):
 #		take_damage(15) # Вот теперь движок найдет эту команду!
+func take_damage(damage):
+ # 1. Защита от двойного урона по трупу (чтобы стрелы не били мертвого)
+	if state == death:
+		return 
+
+ # 2. Отнимаем ХП и выводим в терминал
+	current_health -= damage
+	print("Получен урон! Текущее ХП: ", current_health) 
+ 
+ # 3. Обновляем полоску интерфейса
+	Signals.health_changed.emit(current_health)
+ 
+ # 4. Проверяем состояние
+	if current_health <= 0:
+		death_state()
+	else:
+		state = hurt
+		anim_player.play("hurt") # Используем только anim_player!
+		await anim_player.animation_finished
+  
+  # Защита: возвращаем в move, только если пока проигрывалась боль, нас не убили
+	if state != death: 
+		state = move
+
+func death_state():
+	state = death
+ 
+ # Отключаем физику (твой отличный кусок кода)
+	set_physics_process(false) 
+	velocity = Vector2.ZERO 
+ 
+ # Проигрываем смерть через AnimationPlayer
+	anim_player.play("death")
+ 
+ # Ждем окончания
+	await anim_player.animation_finished
+ 
+ # Переходим в меню
+	get_tree().change_scene_to_file("res://scenes/menu.tscn")

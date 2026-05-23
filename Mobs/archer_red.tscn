@@ -441,12 +441,12 @@ arrow_scene = ExtResource("2_3nmna")
 shape = SubResource("CapsuleShape2D_3nmna")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=5054791]
-position = Vector2(11, -16)
+position = Vector2(-11, -15)
 scale = Vector2(1.5937502, 1.59375)
 sprite_frames = SubResource("SpriteFrames_8ytkq")
-animation = &"run"
+animation = &"attack"
 autoplay = "idle"
-frame_progress = 0.7886984
+flip_h = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1089870330]
 libraries/ = SubResource("AnimationLibrary_avd8q")
