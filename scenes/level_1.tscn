@@ -69,6 +69,7 @@
 [ext_resource type="Texture2D" uid="uid://bl06gghpo3am7" path="res://assets.textures/craftpix-net-867123-free-medieval-field-work-2d-tileset-for-platformer/PNG/Platformer/wall3.png" id="63_uvb5a"]
 [ext_resource type="Texture2D" uid="uid://bgpw330t6batg" path="res://assets.textures/craftpix-net-867123-free-medieval-field-work-2d-tileset-for-platformer/PNG/Platformer/wall4.png" id="64_asvak"]
 [ext_resource type="Texture2D" uid="uid://dh5m04bms22nu" path="res://assets.textures/craftpix-net-867123-free-medieval-field-work-2d-tileset-for-platformer/PNG/Platformer/wall5.png" id="65_fgw8e"]
+[ext_resource type="PackedScene" uid="uid://cqeippxdtnllk" path="res://Mobs/slime.tscn" id="70_uvb5a"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4nkto"]
 texture = ExtResource("2_5xbjy")
@@ -6236,5 +6237,8 @@ position = Vector2(11075, 485)
 position = Vector2(2906, 538)
 
 [node name="Interface" parent="." unique_id=60560458 instance=ExtResource("32_nossa")]
+
+[node name="Slime" parent="." unique_id=67366197 instance=ExtResource("70_uvb5a")]
+position = Vector2(3350, 455)
 
 [editable path="Interface"]
