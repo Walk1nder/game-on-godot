@@ -19,7 +19,6 @@ const JUMP_VELOCITY = -400.0
 @onready var anim_player = $AnimationPlayer
 @onready var hitbox = $AttackDirection/damagebox/HitBox
 
-
 var damage_amount = 20
 var health = 100
 var current_health = 100
@@ -29,11 +28,16 @@ var combo = false
 var cooldown = false
 var player_pos
 
-
 func _ready():
 	Signals.health_changed.emit(current_health)
 	Signals.connect("enemy_attack", Callable (self, "_on_damage_received"))
 	hitbox.get_node("CollisionShape2D").set_deferred("disabled", true)
+func _process(_delta):
+	if global_position.x > 8500:
+		$Camera2D.limit_bottom = 3200
+	else:
+		$Camera2D.limit_bottom = 700
+
 
 func _physics_process(delta):
 	match state:
