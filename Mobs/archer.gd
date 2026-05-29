@@ -147,4 +147,3 @@ func _on_hurt_box_area_entered(area):
   # Резервная проверка (если структура сцены чуть другая, сработает по слову damagebox или hitbox)
 	elif "damagebox" in str(area.name).to_lower() or "hitbox" in str(area.name).to_lower():
 		take_damage(20)
-#pfgfpf
