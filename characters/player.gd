@@ -19,7 +19,7 @@ const JUMP_VELOCITY = -400.0
 @onready var anim_player = $AnimationPlayer
 @onready var hitbox = $AttackDirection/damagebox/HitBox
 
-var damage_amount = 20
+var damage_amount = 10
 var health = 100
 var current_health = 100
 var state = move
@@ -32,6 +32,7 @@ func _ready():
 	Signals.health_changed.emit(current_health)
 	Signals.connect("enemy_attack", Callable (self, "_on_damage_received"))
 	hitbox.get_node("CollisionShape2D").set_deferred("disabled", true)
+	print("🚀🚀🚀 СКРИПТ ИГРОКА ЖИВ И РАБОТАЕТ! 🚀🚀🚀")
 func _process(_delta):
 	if global_position.x > 8500:
 		$Camera2D.limit_bottom = 3200
@@ -177,23 +178,31 @@ func take_hit():
 	if state != death: 
 		state = move
 func _on_hit_box_area_entered(area):
-	# Проверяем, есть ли у области, в которую мы попали, принадлежность к врагу
-	# Например, если у хартбокса врага есть метод take_damage
-	if area.has_method("take_damage"):
-		area.take_damage(damage_amount)
-# 2. Функция для теста по кнопке
-#func _input(event):
-#		take_damage(15) # Вот теперь движок найдет эту команду!
+	print("⚔️ Меч игрока коснулся зоны: ", area.name)
+	var target = area
+ 
+ # Идем вверх по ветке гриба, пока не найдем главный скрипт с take_damage
+	while target != null:
+		if target.has_method("take_damage"):
+			print("✅ Нашли take_damage у: ", target.name, "! Бьем!")
+			target.take_damage(damage_amount) # Твоя переменная урона
+			return
+		target = target.get_parent()
+
+
 func take_damage(damage):
- # 1. Защита от двойного урона по трупу (чтобы стрелы не били мертвого)
+	print("--- НАЧАЛО TAKE_DAMAGE ---")
+	print("Текущее состояние (state) перед уроном: ", state)
+ 
+ # 1. Защита от двойного урона
 	if state == death:
 		return 
 
- # 2. Отнимаем ХП и выводим в терминал
+ # 2. Отнимаем ХП
 	current_health -= damage
 	print("Получен урон! Текущее ХП: ", current_health) 
  
- # 3. Обновляем полоску интерфейса
+ # 3. Обновляем интерфейс
 	Signals.health_changed.emit(current_health)
  
  # 4. Проверяем состояние
@@ -201,12 +210,13 @@ func take_damage(damage):
 		death_state()
 	else:
 		state = hurt
-		anim_player.play("hurt") # Используем только anim_player!
+		anim_player.play("hurt")
 		await anim_player.animation_finished
+		
   
-  # Защита: возвращаем в move, только если пока проигрывалась боль, нас не убили
 	if state != death: 
 		state = move
+		
 
 func death_state():
 	state = death
@@ -223,3 +233,10 @@ func death_state():
  
  # Переходим в меню
 	get_tree().change_scene_to_file("res://scenes/menu.tscn")
+	
+	
+	
+	
+# 2. Функция для теста по кнопке
+#func _input(event):
+#		take_damage(15) # Вот теперь движок найдет эту команду!

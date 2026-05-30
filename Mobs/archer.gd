@@ -22,7 +22,7 @@ var direction: Vector2
 var state: int = IDLE       
 
 # 2. Добавили здоровье лучнику
-var health: int = 100 # Можешь изменить значение
+var health: int = 120 # Можешь изменить значение
 
 func _ready():
 	animPlayer.play("idle")

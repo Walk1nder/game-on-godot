@@ -69,7 +69,7 @@
 [ext_resource type="Texture2D" uid="uid://bl06gghpo3am7" path="res://assets.textures/craftpix-net-867123-free-medieval-field-work-2d-tileset-for-platformer/PNG/Platformer/wall3.png" id="63_uvb5a"]
 [ext_resource type="Texture2D" uid="uid://bgpw330t6batg" path="res://assets.textures/craftpix-net-867123-free-medieval-field-work-2d-tileset-for-platformer/PNG/Platformer/wall4.png" id="64_asvak"]
 [ext_resource type="Texture2D" uid="uid://dh5m04bms22nu" path="res://assets.textures/craftpix-net-867123-free-medieval-field-work-2d-tileset-for-platformer/PNG/Platformer/wall5.png" id="65_fgw8e"]
-[ext_resource type="PackedScene" uid="uid://cqeippxdtnllk" path="res://Mobs/slime.tscn" id="70_uvb5a"]
+[ext_resource type="PackedScene" uid="uid://bh2ajedi1bvgg" path="res://Mobs/mushroom.tscn" id="71_asvak"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4nkto"]
 texture = ExtResource("2_5xbjy")
@@ -6229,16 +6229,25 @@ layer_6/name = "объекты"
 
 [node name="player" parent="." unique_id=621955716 instance=ExtResource("2_rus8k")]
 z_index = 1
-position = Vector2(11075, 485)
+position = Vector2(97, 528)
 
 [node name="Mobs" type="Node2D" parent="." unique_id=315020551]
 
 [node name="Archer_red" parent="Mobs" unique_id=2042170383 instance=ExtResource("9_e3sih")]
 position = Vector2(2906, 538)
 
+[node name="mushroom" parent="Mobs" unique_id=1786031643 instance=ExtResource("71_asvak")]
+position = Vector2(308, 538)
+
+[node name="HurtBox" parent="Mobs/mushroom/DamageBox" parent_id_path=PackedInt32Array(1786031643, 1667341648) index="0" unique_id=973549057]
+collision_layer = 0
+collision_mask = 64
+
+[node name="HitBox" parent="Mobs/mushroom/DamageBox" parent_id_path=PackedInt32Array(1786031643, 1667341648) index="1" unique_id=1719502563]
+collision_mask = 16
+
 [node name="Interface" parent="." unique_id=60560458 instance=ExtResource("32_nossa")]
 
-[node name="Slime" parent="." unique_id=67366197 instance=ExtResource("70_uvb5a")]
-position = Vector2(3350, 455)
-
+[editable path="Mobs/mushroom"]
+[editable path="Mobs/mushroom/DamageBox"]
 [editable path="Interface"]
