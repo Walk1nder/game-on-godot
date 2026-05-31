@@ -878,7 +878,6 @@ height = 64.0
 
 [node name="player" type="CharacterBody2D" unique_id=621955716 groups=["player"]]
 collision_layer = 2
-collision_mask = 5
 floor_max_angle = 1.0471976
 floor_snap_length = 8.0
 script = ExtResource("1_q605b")
@@ -900,7 +899,7 @@ process_callback = 0
 limit_left = 0
 limit_top = 0
 limit_right = 20000
-limit_bottom = 7000
+limit_bottom = 700
 limit_smoothed = true
 position_smoothing_enabled = true
 drag_horizontal_enabled = true

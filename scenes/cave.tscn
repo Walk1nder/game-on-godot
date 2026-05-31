@@ -73,6 +73,7 @@
 [ext_resource type="PackedScene" uid="uid://dhmbk6oknxhm2" path="res://characters/player.tscn" id="70_7wwst"]
 [ext_resource type="PackedScene" uid="uid://devd0rcgvuknd" path="res://Mobs/bat.tscn" id="71_oqqyl"]
 [ext_resource type="PackedScene" uid="uid://bbcpfbp0e1hal" path="res://Mobs/archer_red.tscn" id="73_co4jw"]
+[ext_resource type="PackedScene" uid="uid://cebh7evjx8bxo" path="res://scenes/UI/interface.tscn" id="74_45qmt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sfxkp"]
 resource_name = "cave_back"
@@ -10978,39 +10979,39 @@ layer = -1
 script = ExtResource("1_rye4x")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground2" unique_id=361038235]
-position = Vector2(576, 544)
 motion_scale = Vector2(0.1, 1)
 motion_mirroring = Vector2(1152, 640)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer" unique_id=1338377265]
 texture = ExtResource("2_gisvy")
+centered = false
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground2" unique_id=800587680]
-position = Vector2(576, 544)
 motion_scale = Vector2(0.2, 1)
-motion_mirroring = Vector2(1152, 640)
+motion_mirroring = Vector2(1152, 1088)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer2" unique_id=1286366819]
 texture = ExtResource("3_pyb5q")
+centered = false
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground2" unique_id=683670746]
-position = Vector2(576, 544)
 motion_scale = Vector2(0.4, 1)
-motion_mirroring = Vector2(1152, 640)
+motion_mirroring = Vector2(1152, 1088)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer3" unique_id=507255266]
 texture = ExtResource("4_7wwst")
+centered = false
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground2" unique_id=581025557]
-position = Vector2(576, 544)
 motion_scale = Vector2(0.8, 1)
-motion_mirroring = Vector2(1152, 640)
+motion_mirroring = Vector2(1152, 1088)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer4" unique_id=997273246]
 texture = ExtResource("5_w1vhv")
+centered = false
 
 [node name="TileMap" type="TileMap" parent="." unique_id=186270641]
-position = Vector2(0, 570)
+position = Vector2(0, 1191)
 tile_set = SubResource("TileSet_vxr2e")
 format = 2
 layer_0/name = "бэк1"
@@ -11031,27 +11032,31 @@ layer_5/z_index = 3
 layer_6/name = "объекты"
 
 [node name="lever" parent="." unique_id=32286747 instance=ExtResource("69_pyb5q")]
-position = Vector2(594, 917)
+position = Vector2(595, 1541)
 collision_layer = 4
 collision_mask = 2
 
 [node name="player" parent="." unique_id=621955716 instance=ExtResource("70_7wwst")]
 z_index = 1
-position = Vector2(345, 128)
+position = Vector2(508, 743)
 
 [node name="Mobs" type="Node2D" parent="." unique_id=1205053004]
 
 [node name="Bat" parent="Mobs" unique_id=2040037860 instance=ExtResource("71_oqqyl")]
-position = Vector2(1528, 390)
+position = Vector2(1529, 1016)
 
 [node name="Archer_red" parent="Mobs" unique_id=2042170383 instance=ExtResource("73_co4jw")]
-position = Vector2(639, 939)
+position = Vector2(653, 1563)
 
 [node name="Bat2" parent="Mobs" unique_id=1856557313 instance=ExtResource("71_oqqyl")]
-position = Vector2(2949, 10)
+position = Vector2(2950, 636)
 
 [node name="Bat3" parent="Mobs" unique_id=87443978 instance=ExtResource("71_oqqyl")]
-position = Vector2(1373, 14)
+position = Vector2(1374, 640)
 
 [node name="Bat4" parent="Mobs" unique_id=44912344 instance=ExtResource("71_oqqyl")]
-position = Vector2(687, 15)
+position = Vector2(688, 641)
+
+[node name="Interface" parent="." unique_id=60560458 instance=ExtResource("74_45qmt")]
+
+[editable path="Interface"]

@@ -1,7 +1,6 @@
 extends Node2D
 
 func _ready():
-	var camera = $"../player/Camera2D"
 
 	$player/Camera2D.limit_left = 0
 	$player/Camera2D.limit_top = -1000
