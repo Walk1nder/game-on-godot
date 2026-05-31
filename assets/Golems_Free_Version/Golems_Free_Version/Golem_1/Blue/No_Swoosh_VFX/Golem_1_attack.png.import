@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cuu7u3bd20qp0"
-path="res://.godot/imported/Golem_1_attack.png-efe8a67b0af020f4550af051b238e4f5.ctex"
+path="res://.godot/imported/Golem_1_attack.png-565bccd0435360fb5e0e470f57004e1f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets.textures/Golems_Free_Version/Golems_Free_Version/Golem_1/Blue/No_Swoosh_VFX/Golem_1_attack.png"
-dest_files=["res://.godot/imported/Golem_1_attack.png-efe8a67b0af020f4550af051b238e4f5.ctex"]
+source_file="res://assets/Golems_Free_Version/Golems_Free_Version/Golem_1/Blue/No_Swoosh_VFX/Golem_1_attack.png"
+dest_files=["res://.godot/imported/Golem_1_attack.png-565bccd0435360fb5e0e470f57004e1f.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bvligbttrpe18"
-path="res://.godot/imported/Golem_1_walk.png-c37310f9dd662d08813dbd7f4f7c435b.ctex"
+path="res://.godot/imported/Golem_1_walk.png-6f1373c5ef16d3f5240194b8658ae154.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets.textures/Golems_Free_Version/Golems_Free_Version/Golem_1/Blue/No_Swoosh_VFX/Golem_1_walk.png"
-dest_files=["res://.godot/imported/Golem_1_walk.png-c37310f9dd662d08813dbd7f4f7c435b.ctex"]
+source_file="res://assets/Golems_Free_Version/Golems_Free_Version/Golem_1/Blue/No_Swoosh_VFX/Golem_1_walk.png"
+dest_files=["res://.godot/imported/Golem_1_walk.png-6f1373c5ef16d3f5240194b8658ae154.ctex"]
 
 [params]
 

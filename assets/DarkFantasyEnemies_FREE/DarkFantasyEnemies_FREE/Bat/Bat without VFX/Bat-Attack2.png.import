@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://chnxkq7i0frqt"
-path="res://.godot/imported/Bat-Attack2.png-f599b2876e85d2b830252a13e51a08db.ctex"
+path="res://.godot/imported/Bat-Attack2.png-385c28f9a69d2ab896706b2edbcaf2ab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets.textures/DarkFantasyEnemies_FREE/DarkFantasyEnemies_FREE/Bat/Bat without VFX/Bat-Attack2.png"
-dest_files=["res://.godot/imported/Bat-Attack2.png-f599b2876e85d2b830252a13e51a08db.ctex"]
+source_file="res://assets/DarkFantasyEnemies_FREE/DarkFantasyEnemies_FREE/Bat/Bat without VFX/Bat-Attack2.png"
+dest_files=["res://.godot/imported/Bat-Attack2.png-385c28f9a69d2ab896706b2edbcaf2ab.ctex"]
 
 [params]
 

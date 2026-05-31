@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bs0d5w430ejdh"
-path="res://.godot/imported/Golem_1_die.png-ab7bb0b1c9770afc07323743f8fe3cd7.ctex"
+path="res://.godot/imported/Golem_1_die.png-f268c2694400cd845f4621a4fb9f1b42.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets.textures/Golems_Free_Version/Golems_Free_Version/Golem_1/Blue/White_Swoosh_VFX/Golem_1_die.png"
-dest_files=["res://.godot/imported/Golem_1_die.png-ab7bb0b1c9770afc07323743f8fe3cd7.ctex"]
+source_file="res://assets/Golems_Free_Version/Golems_Free_Version/Golem_1/Blue/White_Swoosh_VFX/Golem_1_die.png"
+dest_files=["res://.godot/imported/Golem_1_die.png-f268c2694400cd845f4621a4fb9f1b42.ctex"]
 
 [params]
 

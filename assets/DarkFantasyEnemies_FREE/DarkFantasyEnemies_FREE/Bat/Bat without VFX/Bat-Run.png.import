@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b34fiw88lbicd"
-path="res://.godot/imported/Bat-Run.png-ab79f5b6e1cceffaead60f39e9c4ab39.ctex"
+path="res://.godot/imported/Bat-Run.png-ca4bd9652d9926055baec5de6d9a8295.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets.textures/DarkFantasyEnemies_FREE/DarkFantasyEnemies_FREE/Bat/Bat without VFX/Bat-Run.png"
-dest_files=["res://.godot/imported/Bat-Run.png-ab79f5b6e1cceffaead60f39e9c4ab39.ctex"]
+source_file="res://assets/DarkFantasyEnemies_FREE/DarkFantasyEnemies_FREE/Bat/Bat without VFX/Bat-Run.png"
+dest_files=["res://.godot/imported/Bat-Run.png-ca4bd9652d9926055baec5de6d9a8295.ctex"]
 
 [params]
 

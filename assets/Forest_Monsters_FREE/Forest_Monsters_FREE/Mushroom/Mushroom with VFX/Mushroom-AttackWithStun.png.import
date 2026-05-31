@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://o101fospw7jj"
-path="res://.godot/imported/Mushroom-AttackWithStun.png-e2c5b5d70958ea5d82c5f1329b43ccd3.ctex"
+path="res://.godot/imported/Mushroom-AttackWithStun.png-202ef92c106e8104d7c07f2d26385686.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets.textures/Forest_Monsters_FREE/Forest_Monsters_FREE/Mushroom/Mushroom with VFX/Mushroom-AttackWithStun.png"
-dest_files=["res://.godot/imported/Mushroom-AttackWithStun.png-e2c5b5d70958ea5d82c5f1329b43ccd3.ctex"]
+source_file="res://assets/Forest_Monsters_FREE/Forest_Monsters_FREE/Mushroom/Mushroom with VFX/Mushroom-AttackWithStun.png"
+dest_files=["res://.godot/imported/Mushroom-AttackWithStun.png-202ef92c106e8104d7c07f2d26385686.ctex"]
 
 [params]
 

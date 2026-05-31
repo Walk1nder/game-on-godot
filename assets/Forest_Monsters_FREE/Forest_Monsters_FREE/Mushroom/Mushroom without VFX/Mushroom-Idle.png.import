@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://da6f3r8b2brxw"
-path="res://.godot/imported/Mushroom-Idle.png-843462f62fa11f73b65a9de5d4f5aea1.ctex"
+path="res://.godot/imported/Mushroom-Idle.png-d3d64741e1fd4365605e9c4a80568833.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets.textures/Forest_Monsters_FREE/Forest_Monsters_FREE/Mushroom/Mushroom without VFX/Mushroom-Idle.png"
-dest_files=["res://.godot/imported/Mushroom-Idle.png-843462f62fa11f73b65a9de5d4f5aea1.ctex"]
+source_file="res://assets/Forest_Monsters_FREE/Forest_Monsters_FREE/Mushroom/Mushroom without VFX/Mushroom-Idle.png"
+dest_files=["res://.godot/imported/Mushroom-Idle.png-d3d64741e1fd4365605e9c4a80568833.ctex"]
 
 [params]
 

@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://bapvkim45tmxk"]
+
+[ext_resource type="Texture2D" uid="uid://dsh3275r6w60k" path="res://assets.textures/lever/pixilart-sprite - Kopi.png" id="1_4kwec"]
+[ext_resource type="Script" uid="uid://bpwype0dj7pct" path="res://scenes/lever.gd" id="2_ncfea"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ncfea"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qxmkn"]
+atlas = ExtResource("1_4kwec")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8di2w"]
+atlas = ExtResource("1_4kwec")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dkrws"]
+atlas = ExtResource("1_4kwec")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efr3d"]
+atlas = ExtResource("1_4kwec")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3flmr"]
+atlas = ExtResource("1_4kwec")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_igrgq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qxmkn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8di2w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dkrws")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efr3d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3flmr")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="lever" type="Area2D" unique_id=32286747]
+script = ExtResource("2_ncfea")
+
+[node name="Label" type="Label" parent="." unique_id=826777316]
+offset_left = -10.0
+offset_top = -51.0
+offset_right = 10.0
+offset_bottom = -13.0
+text = "[E]"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=569642014]
+shape = SubResource("RectangleShape2D_ncfea")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=396061679]
+position = Vector2(0, -2)
+scale = Vector2(1, 1.0625)
+sprite_frames = SubResource("SpriteFrames_igrgq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

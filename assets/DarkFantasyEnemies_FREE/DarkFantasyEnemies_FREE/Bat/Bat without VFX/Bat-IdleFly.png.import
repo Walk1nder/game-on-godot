@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://iy5k3i6qfnnx"
-path="res://.godot/imported/Bat-IdleFly.png-1a41191aa037ad9f30f21c03a94350e0.ctex"
+path="res://.godot/imported/Bat-IdleFly.png-8fc1d61b9152c2a18b3f81f1012505c3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets.textures/DarkFantasyEnemies_FREE/DarkFantasyEnemies_FREE/Bat/Bat without VFX/Bat-IdleFly.png"
-dest_files=["res://.godot/imported/Bat-IdleFly.png-1a41191aa037ad9f30f21c03a94350e0.ctex"]
+source_file="res://assets/DarkFantasyEnemies_FREE/DarkFantasyEnemies_FREE/Bat/Bat without VFX/Bat-IdleFly.png"
+dest_files=["res://.godot/imported/Bat-IdleFly.png-8fc1d61b9152c2a18b3f81f1012505c3.ctex"]
 
 [params]
 
