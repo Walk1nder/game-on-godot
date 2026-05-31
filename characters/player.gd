@@ -33,11 +33,6 @@ func _ready():
 	Signals.connect("enemy_attack", Callable (self, "_on_damage_received"))
 	hitbox.get_node("CollisionShape2D").set_deferred("disabled", true)
 	print("🚀🚀🚀 СКРИПТ ИГРОКА ЖИВ И РАБОТАЕТ! 🚀🚀🚀")
-func _process(_delta):
-	if global_position.x > 8500:
-		$Camera2D.limit_bottom = 3200
-	else:
-		$Camera2D.limit_bottom = 700
 
 
 func _physics_process(delta):
