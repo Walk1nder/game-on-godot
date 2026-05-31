@@ -78,6 +78,7 @@
 [ext_resource type="Texture2D" uid="uid://dh5m04bms22nu" path="res://assets.textures/cartoon_medieval_frield/PNG/Platformer/wall5.png" id="65_fgw8e"]
 [ext_resource type="PackedScene" uid="uid://bh2ajedi1bvgg" path="res://Mobs/mushroom.tscn" id="71_asvak"]
 [ext_resource type="PackedScene" uid="uid://bapvkim45tmxk" path="res://scenes/lever.tscn" id="72_5vesh"]
+[ext_resource type="PackedScene" uid="uid://devd0rcgvuknd" path="res://Mobs/bat.tscn" id="79_p48aj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a1lg4"]
 resource_name = "cave_back"
@@ -11104,6 +11105,9 @@ z_index = 1
 position = Vector2(9319, 442)
 
 [node name="Mobs" type="Node2D" parent="." unique_id=315020551]
+
+[node name="Bat" parent="Mobs" unique_id=2040037860 instance=ExtResource("79_p48aj")]
+position = Vector2(10235, 378)
 
 [node name="Archer_red" parent="Mobs" unique_id=2042170383 instance=ExtResource("9_e3sih")]
 position = Vector2(2906, 538)

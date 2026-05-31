@@ -112,6 +112,7 @@ func start_attack():
 		state = idle
 func start_hurt():
 	state = hurt
+	anim_player.stop() 
 	anim_player.play("Hurt")
 	await anim_player.animation_finished
 	if state != death and state != stun:
@@ -196,10 +197,6 @@ func take_damage(damage):
   # (Анимацию урона лучше проигрывать внутри start_stun, чтобы они не путались)
 		print("🍄 Гриб оглушен!")
 		start_stun()
-
-
-
-
 func _on_hurt_box_area_entered(area):
 	print("💥 Что-то коснулось Гриба: ", area.name)
  
