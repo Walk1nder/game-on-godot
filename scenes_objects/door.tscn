@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://c141uqbruif27"]
+
+[ext_resource type="Script" uid="uid://dix5rs6i7nm0g" path="res://door.gd" id="1_oqrtg"]
+[ext_resource type="Texture2D" uid="uid://cqqaccvpjfqll" path="res://assets.textures/cave_tileset/closed_door.png" id="2_i0odw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qrber"]
+size = Vector2(65, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oqrtg"]
+size = Vector2(18, 103)
+
+[node name="door" type="StaticBody2D" unique_id=2050182745]
+script = ExtResource("1_oqrtg")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=542200842]
+position = Vector2(8.5, -15.500004)
+scale = Vector2(1.3541667, 1.4843749)
+texture = ExtResource("2_i0odw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=215611242]
+position = Vector2(8.5, -65.5)
+shape = SubResource("RectangleShape2D_qrber")
+disabled = true
+one_way_collision_margin = 0.0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=995397870]
+position = Vector2(50, -19.5)
+shape = SubResource("RectangleShape2D_oqrtg")

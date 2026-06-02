@@ -4,7 +4,6 @@ var player_in_range = false
 var activated = false
 
 func _ready():
-	add_to_group("player")
 	$Label.hide()
 
 func _on_body_entered(body: Node2D) -> void:
@@ -32,7 +31,6 @@ func activate_lever():
 	self.monitoring = false
 	$AnimatedSprite2D.play("default")
 	$Label.hide()
-
+	lever_activated.emit()
 	
-
 signal lever_activated
