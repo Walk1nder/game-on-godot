@@ -11099,8 +11099,6 @@ collision_layer = 0
 light_mask = 4
 position = Vector2(296, 412)
 
-[node name="Interface" parent="." unique_id=60560458 instance=ExtResource("32_nossa")]
-
 [node name="LevelTransition" type="Area2D" parent="." unique_id=362859659]
 position = Vector2(7789, 497)
 collision_layer = 0
@@ -11111,6 +11109,8 @@ next_scene_path = "res://scenes/cave.tscn"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransition" unique_id=409971902]
 position = Vector2(19, -24)
 shape = SubResource("RectangleShape2D_uuude")
+
+[node name="Interface" parent="." unique_id=60560458 instance=ExtResource("32_nossa")]
 
 [connection signal="body_entered" from="LevelTransition" to="LevelTransition" method="_on_body_entered"]
 

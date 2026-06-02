@@ -77,6 +77,7 @@
 [ext_resource type="PackedScene" uid="uid://c141uqbruif27" path="res://scenes_objects/door.tscn" id="73_3njaf"]
 [ext_resource type="PackedScene" uid="uid://bbcpfbp0e1hal" path="res://Mobs/archer_red.tscn" id="73_co4jw"]
 [ext_resource type="PackedScene" uid="uid://cebh7evjx8bxo" path="res://scenes/UI/interface.tscn" id="74_45qmt"]
+[ext_resource type="PackedScene" uid="uid://c2esjfbpe3hvw" path="res://Mobs/satyr.tscn" id="78_h2qgp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sfxkp"]
 resource_name = "cave_back"
@@ -11075,7 +11076,7 @@ collision_mask = 0
 
 [node name="player" parent="." unique_id=621955716 instance=ExtResource("70_7wwst")]
 z_index = 1
-position = Vector2(581, 1548)
+position = Vector2(287, 784)
 
 [node name="Mobs" type="Node2D" parent="." unique_id=1205053004]
 
@@ -11095,6 +11096,9 @@ position = Vector2(1374, 640)
 position = Vector2(688, 641)
 
 [node name="Interface" parent="." unique_id=60560458 instance=ExtResource("74_45qmt")]
+
+[node name="Satyr" parent="." unique_id=1471061815 instance=ExtResource("78_h2qgp")]
+position = Vector2(756, 793)
 
 [connection signal="lever_activated" from="lever" to="door" method="_on_lever_lever_activated"]
 

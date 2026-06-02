@@ -29,10 +29,20 @@ var cooldown = false
 var player_pos
 
 func _ready():
-	Signals.health_changed.emit(current_health)
-	Signals.connect("enemy_attack", Callable (self, "_on_damage_received"))
-	hitbox.get_node("CollisionShape2D").set_deferred("disabled", true)
 	print("🚀🚀🚀 СКРИПТ ИГРОКА ЖИВ И РАБОТАЕТ! 🚀🚀🚀")
+ 
+ # 1. СНАЧАЛА забираем сохраненное здоровье с прошлой локации
+	current_health = Global.player_health
+ 
+ # 2. ТОЛЬКО ПОТОМ отправляем сигнал, чтобы хелсбар обновился до нужного значения
+	Signals.health_changed.emit(current_health)
+ 
+ # 3. Подключаем сигнал атаки врага
+	Signals.connect("enemy_attack", Callable(self, "_on_damage_received"))
+ 
+ # 4. Отключаем хитбокс (чтобы не получать случайный урон в начале)
+	hitbox.get_node("CollisionShape2D").set_deferred("disabled", true)
+
 
 
 func _physics_process(delta):
@@ -188,30 +198,33 @@ func _on_hit_box_area_entered(area):
 func take_damage(damage):
 	print("--- НАЧАЛО TAKE_DAMAGE ---")
 	print("Текущее состояние (state) перед уроном: ", state)
- 
- # 1. Защита от двойного урона
+
+ # 1. Защита: если игрок уже мертв, игнорируем дальнейший урон
 	if state == death:
 		return 
 
- # 2. Отнимаем ХП
+ # 2. Отнимаем ХП (используем твою переменную current_health)
 	current_health -= damage
 	print("Получен урон! Текущее ХП: ", current_health) 
+
+ # 3. Сохраняем новое ХП в склад (чтобы перенести на другую локацию)
+	Global.player_health = current_health 
  
- # 3. Обновляем интерфейс
+ # 4. Кричим на всю игру: "ХП изменилось!" (чтобы хелсбар обновился)
 	Signals.health_changed.emit(current_health)
- 
- # 4. Проверяем состояние
+
+ # 5. Проверяем состояние: умер или просто ранен?
 	if current_health <= 0:
 		death_state()
 	else:
 		state = hurt
 		anim_player.play("hurt")
 		await anim_player.animation_finished
-		
   
-	if state != death: 
-		state = move
-		
+  # Если пока проигрывалась анимация боли игрок не умер, возвращаем ему движение
+		if state != death: 
+			state = move
+
 
 func death_state():
 	state = death

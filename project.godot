@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Signals="*uid://csiwpbi2i7e2r"
 TransitionScreen="*uid://dj18xsg6tvdlb"
+Global="*uid://co4mmjvd5cx7b"
 
 [editor_plugins]
 
