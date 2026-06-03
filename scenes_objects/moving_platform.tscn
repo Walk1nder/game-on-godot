@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://csrjb167vl78q"]
+
+[ext_resource type="Script" uid="uid://comms2lx80lqu" path="res://moving_platform.gd" id="1_iom5k"]
+[ext_resource type="Texture2D" uid="uid://btaw4rbmvqlxa" path="res://assets.textures/cave_tileset/moving_platform.png" id="2_ibfjh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0eevt"]
+size = Vector2(96, 16)
+
+[node name="moving_platform" type="AnimatableBody2D" unique_id=2127957220]
+script = ExtResource("1_iom5k")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1251709090]
+texture = ExtResource("2_ibfjh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1348871441]
+shape = SubResource("RectangleShape2D_0eevt")
+one_way_collision = true
+
+[node name="Timer" type="Timer" parent="." unique_id=197442677]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

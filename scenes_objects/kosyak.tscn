@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cwmu4kyuo7y1w"]
+
+[ext_resource type="Texture2D" uid="uid://1rnp1ribvbsl" path="res://assets.textures/cave_tileset/kosyak.png" id="1_j7n2x"]
+
+[node name="kosyak" type="Area2D" unique_id=1946222043]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1859192955]
+visible = false
+texture = ExtResource("1_j7n2x")
