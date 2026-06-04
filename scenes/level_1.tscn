@@ -11061,7 +11061,7 @@ layer_6/name = "объекты"
 
 [node name="player" parent="." unique_id=621955716 instance=ExtResource("2_rus8k")]
 z_index = 1
-position = Vector2(7348, 499)
+position = Vector2(268, 509)
 
 [node name="Mobs" type="Node2D" parent="." unique_id=315020551]
 
@@ -11111,6 +11111,48 @@ position = Vector2(19, -24)
 shape = SubResource("RectangleShape2D_uuude")
 
 [node name="Interface" parent="." unique_id=60560458 instance=ExtResource("32_nossa")]
+
+[node name="HealthBar" parent="Interface/PlayerStatsUI" parent_id_path=PackedInt32Array(60560458, 454667940) index="0" unique_id=941308311]
+anchor_left = 0.17431207
+anchor_top = -0.25500017
+anchor_right = 0.17431313
+anchor_bottom = -0.25499973
+offset_left = 44.0
+offset_top = 31.800005
+offset_right = 154.19997
+offset_bottom = 58.399994
+
+[node name="ManaBar" parent="Interface/PlayerStatsUI" parent_id_path=PackedInt32Array(60560458, 454667940) index="1" unique_id=937485615]
+offset_top = 54.999996
+offset_bottom = 67.59999
+
+[node name="FlaskOverlay" parent="Interface/PlayerStatsUI" parent_id_path=PackedInt32Array(60560458, 454667940) index="2" unique_id=779696869]
+anchor_left = -0.15596329
+anchor_top = -0.36999997
+anchor_right = -0.1559632
+anchor_bottom = -0.3550001
+offset_left = 40.399998
+offset_top = 34.8
+offset_right = 167.20001
+offset_bottom = 65.00001
+
+[node name="Manabar1" parent="Interface/PlayerStatsUI" parent_id_path=PackedInt32Array(60560458, 454667940) index="3" unique_id=203331746]
+anchor_left = -0.47706422
+anchor_top = -0.19999996
+anchor_right = -0.47706413
+anchor_bottom = -0.1999999
+
+[node name="Manabar2" parent="Interface/PlayerStatsUI" parent_id_path=PackedInt32Array(60560458, 454667940) index="4" unique_id=1726024194]
+anchor_left = 0.34862387
+anchor_top = -0.19999996
+anchor_right = 0.34862396
+anchor_bottom = -0.1999999
+
+[node name="Manabar3" parent="Interface/PlayerStatsUI" parent_id_path=PackedInt32Array(60560458, 454667940) index="5" unique_id=363471372]
+anchor_left = -0.06422017
+anchor_top = -0.19999996
+anchor_right = -0.06422008
+anchor_bottom = -0.1999999
 
 [connection signal="body_entered" from="LevelTransition" to="LevelTransition" method="_on_body_entered"]
 

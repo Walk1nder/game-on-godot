@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://cebh7evjx8bxo"]
 
 [ext_resource type="Script" uid="uid://cs2mgxldi733" path="res://scenes/UI/player_stats_ui.gd" id="1_nc7fh"]
-[ext_resource type="Texture2D" uid="uid://c0g7ew2my46fa" path="res://assets.textures/GandalfHardcore Hp bar/Hp bar.png" id="1_po50s"]
-[ext_resource type="Texture2D" uid="uid://cdk0jmrrvpi8o" path="res://assets.textures/GandalfHardcore Hp bar/red bar.png" id="2_h5gjf"]
-[ext_resource type="Texture2D" uid="uid://kg75xyvk3lb" path="res://assets.textures/GandalfHardcore Hp bar/Blue bar.png" id="2_p673a"]
-[ext_resource type="Texture2D" uid="uid://b2r2ci43iwn2e" path="res://assets.textures/GandalfHardcore Hp bar/yellow bar.png" id="3_p673a"]
+[ext_resource type="Texture2D" uid="uid://btdmppbh7jjp7" path="res://assets.textures/CrimsonFantasyGU_fixed/CrimsonFantasyGUI/HP2.png" id="2_p673a"]
+[ext_resource type="Texture2D" uid="uid://c2sl1obmjo82x" path="res://assets.textures/CrimsonFantasyGU_fixed/CrimsonFantasyGUI/HP1.png" id="3_nc7fh"]
+[ext_resource type="Texture2D" uid="uid://ckiup2jxws8bw" path="res://assets.textures/CrimsonFantasyGU_fixed/CrimsonFantasyGUI/Manabar2.png" id="3_wb0u6"]
+[ext_resource type="Texture2D" uid="uid://cr5uqkk467msn" path="res://assets.textures/CrimsonFantasyGU_fixed/CrimsonFantasyGUI/Manabar1.png" id="4_wb0u6"]
 
 [node name="Interface" type="CanvasLayer" unique_id=60560458]
 
@@ -19,43 +19,94 @@ scale = Vector2(2.5, 2.5)
 script = ExtResource("1_nc7fh")
 
 [node name="HealthBar" type="TextureProgressBar" parent="PlayerStatsUI" unique_id=941308311]
-layout_mode = 0
-offset_left = 19.400002
-offset_top = 10.600002
-offset_right = 143.95071
-offset_bottom = 74.59999
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.32568818
+anchor_top = -0.22500014
+anchor_right = 0.32568908
+anchor_bottom = -0.22499982
+offset_left = 33.4
+offset_top = 29.400003
+offset_right = 143.59998
+offset_bottom = 55.999992
+scale = Vector2(2, 2)
 tooltip_text = "
 "
 value = 100.0
-fill_mode = 3
-texture_progress = ExtResource("2_h5gjf")
+texture_progress = ExtResource("2_p673a")
 texture_progress_offset = Vector2(4.86, 3.15)
+metadata/_edit_use_anchors_ = true
 
 [node name="ManaBar" type="TextureProgressBar" parent="PlayerStatsUI" unique_id=937485615]
+visible = false
 layout_mode = 0
-offset_left = 30.200008
-offset_top = 10.600002
-offset_right = 146.20004
-offset_bottom = 74.600006
-value = 26.0
-texture_progress = ExtResource("2_p673a")
+offset_left = -14.799992
+offset_top = -23.99999
+offset_right = 40.2
+offset_bottom = -7.9999905
+value = 100.0
+fill_mode = 2
+texture_progress = ExtResource("3_wb0u6")
 texture_progress_offset = Vector2(50.225, 51.165)
 
-[node name="StaminaBar" type="TextureProgressBar" parent="PlayerStatsUI" unique_id=1511192119]
-layout_mode = 0
-offset_left = 80.00008
-offset_top = 54.40001
-offset_right = 120.00008
-offset_bottom = 94.400024
-value = 100.0
-texture_progress = ExtResource("3_p673a")
-texture_progress_offset = Vector2(-0.14, 1.015)
-
 [node name="FlaskOverlay" type="TextureRect" parent="PlayerStatsUI" unique_id=779696869]
-layout_mode = 0
-offset_left = 22.350006
-offset_top = 12.400002
-offset_right = 129.65
-offset_bottom = 71.6
-texture = ExtResource("1_po50s")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0045872172
+anchor_top = -0.33999997
+anchor_right = -0.004587086
+anchor_bottom = -0.3250002
+offset_left = 29.800003
+offset_top = 32.399998
+offset_right = 156.6
+offset_bottom = 62.600006
+texture = ExtResource("3_nc7fh")
+metadata/_edit_use_anchors_ = true
+
+[node name="Manabar1" type="TextureRect" parent="PlayerStatsUI" unique_id=203331746]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.05504591
+anchor_top = -0.13999996
+anchor_right = -1.1559634
+anchor_bottom = -0.13999996
+offset_left = 37.6
+offset_top = 32.399998
+offset_right = 101.6
+offset_bottom = 48.399998
+texture = ExtResource("4_wb0u6")
 expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Manabar2" type="TextureRect" parent="PlayerStatsUI" unique_id=1726024194]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.77064204
+anchor_top = -0.13999996
+anchor_right = -0.33027527
+anchor_bottom = -0.13999996
+offset_left = 37.6
+offset_top = 32.399998
+offset_right = 101.6
+offset_bottom = 48.399998
+texture = ExtResource("4_wb0u6")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Manabar3" type="TextureRect" parent="PlayerStatsUI" unique_id=363471372]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.35779798
+anchor_top = -0.13999996
+anchor_right = -0.7431193
+anchor_bottom = -0.13999996
+offset_left = 37.6
+offset_top = 32.399998
+offset_right = 101.6
+offset_bottom = 48.399998
+texture = ExtResource("4_wb0u6")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
