@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://55nvsqrxu8s3"]
+
+[ext_resource type="Script" uid="uid://dxfgh34gayocp" path="res://rope.gd" id="1_vyf2i"]
+[ext_resource type="Texture2D" uid="uid://bmuhb6dip5fbq" path="res://assets.textures/cave_tileset/rope.png" id="2_2vl0r"]
+
+[node name="Rope" type="Node2D" unique_id=1411803365]
+z_index = -1
+script = ExtResource("1_vyf2i")
+
+[node name="Anchor" type="Marker2D" parent="." unique_id=651279724]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1172678370]
+scale = Vector2(1, 0.90410966)
+texture = ExtResource("2_2vl0r")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 6, 73)

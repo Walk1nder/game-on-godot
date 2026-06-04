@@ -152,7 +152,7 @@ func combo2_state():
 	state = move	
 func attack_freeze():
 	cooldown = true
-	await get_tree().create_timer(0.2).timeout
+	await get_tree().create_timer(1).timeout
 	cooldown = false
 func hurt_state():
 	velocity.x = 0
