@@ -1,3 +1,36 @@
 [gd_scene format=3 uid="uid://dok4gycwcn350"]
 
-[node name="InventorySlot" type="CanvasLayer" unique_id=1796297242]
+[ext_resource type="Texture2D" uid="uid://cr5uqkk467msn" path="res://assets.textures/CrimsonFantasyGU_fixed/CrimsonFantasyGUI/Manabar1.png" id="1_dxvxp"]
+
+[node name="InventorySlot" type="TextureRect" unique_id=1629542194]
+custom_minimum_size = Vector2(64, 64)
+anchors_preset = -1
+anchor_right = 0.056
+anchor_bottom = 0.09900001
+offset_right = -64.512
+offset_bottom = -64.15201
+
+[node name="ItemIcon" type="TextureRect" parent="." unique_id=2019888483]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_dxvxp")
+expand_mode = 1
+
+[node name="AmountLabel" type="Label" parent="." unique_id=525407034]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 17.954
+anchor_bottom = 9.988001
+offset_left = 48.0
+offset_top = 38.0
+offset_right = -1085.056
+offset_bottom = -564.23206
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 27
+text = "5"

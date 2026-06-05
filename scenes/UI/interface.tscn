@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://c2sl1obmjo82x" path="res://assets.textures/CrimsonFantasyGU_fixed/CrimsonFantasyGUI/HP1.png" id="3_nc7fh"]
 [ext_resource type="Texture2D" uid="uid://ckiup2jxws8bw" path="res://assets.textures/CrimsonFantasyGU_fixed/CrimsonFantasyGUI/Manabar2.png" id="3_wb0u6"]
 [ext_resource type="Texture2D" uid="uid://cr5uqkk467msn" path="res://assets.textures/CrimsonFantasyGU_fixed/CrimsonFantasyGUI/Manabar1.png" id="4_wb0u6"]
+[ext_resource type="PackedScene" uid="uid://dok4gycwcn350" path="res://scenes/inventory_slot.tscn" id="6_wb0u6"]
+[ext_resource type="Script" uid="uid://ipgpv4mo5sgv" path="res://scenes/UI/inventory_ui.gd" id="6_ywvr4"]
 
 [node name="Interface" type="CanvasLayer" unique_id=60560458]
 
@@ -113,13 +115,14 @@ metadata/_edit_use_anchors_ = true
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -47.0
-offset_top = 8.0
-offset_right = -7.0
-offset_bottom = 48.0
+offset_left = -426.0
+offset_top = 44.0
+offset_right = -2.0
+offset_bottom = 128.0
 grow_horizontal = 0
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
+script = ExtResource("6_ywvr4")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="InventoryUI" unique_id=973752502]
 layout_mode = 2
@@ -127,3 +130,80 @@ layout_mode = 2
 [node name="HotbarGrid" type="GridContainer" parent="InventoryUI/VBoxContainer" unique_id=1135736405]
 layout_mode = 2
 columns = 6
+
+[node name="InventorySlot" parent="InventoryUI/VBoxContainer/HotbarGrid" unique_id=1629542194 instance=ExtResource("6_wb0u6")]
+layout_mode = 2
+
+[node name="InventorySlot2" parent="InventoryUI/VBoxContainer/HotbarGrid" unique_id=1194332883 instance=ExtResource("6_wb0u6")]
+layout_mode = 2
+
+[node name="InventorySlot3" parent="InventoryUI/VBoxContainer/HotbarGrid" unique_id=2008944584 instance=ExtResource("6_wb0u6")]
+layout_mode = 2
+
+[node name="InventorySlot4" parent="InventoryUI/VBoxContainer/HotbarGrid" unique_id=174915576 instance=ExtResource("6_wb0u6")]
+layout_mode = 2
+
+[node name="InventorySlot5" parent="InventoryUI/VBoxContainer/HotbarGrid" unique_id=1748644465 instance=ExtResource("6_wb0u6")]
+layout_mode = 2
+
+[node name="InventorySlot6" parent="InventoryUI/VBoxContainer/HotbarGrid" unique_id=1737233369 instance=ExtResource("6_wb0u6")]
+layout_mode = 2
+
+[node name="ExpandedInventory" type="GridContainer" parent="InventoryUI/VBoxContainer" unique_id=392561276]
+visible = false
+layout_mode = 2
+columns = 6
+
+[node name="InventorySlot" parent="InventoryUI/VBoxContainer/ExpandedInventory" unique_id=896588022 instance=ExtResource("6_wb0u6")]
+layout_mode = 2
+
+[node name="InventorySlot2" parent="InventoryUI/VBoxContainer/ExpandedInventory" unique_id=1537133081 instance=ExtResource("6_wb0u6")]
+layout_mode = 2
+
+[node name="InventorySlot3" parent="InventoryUI/VBoxContainer/ExpandedInventory" unique_id=2086224459 instance=ExtResource("6_wb0u6")]
+layout_mode = 2
+
+[node name="InventorySlot4" parent="InventoryUI/VBoxContainer/ExpandedInventory" unique_id=940294598 instance=ExtResource("6_wb0u6")]
+layout_mode = 2
+
+[node name="InventorySlot5" parent="InventoryUI/VBoxContainer/ExpandedInventory" unique_id=1279480688 instance=ExtResource("6_wb0u6")]
+layout_mode = 2
+
+[node name="InventorySlot6" parent="InventoryUI/VBoxContainer/ExpandedInventory" unique_id=1563032362 instance=ExtResource("6_wb0u6")]
+layout_mode = 2
+
+[node name="InventorySlot7" parent="InventoryUI/VBoxContainer/ExpandedInventory" unique_id=273510690 instance=ExtResource("6_wb0u6")]
+layout_mode = 2
+
+[node name="InventorySlot8" parent="InventoryUI/VBoxContainer/ExpandedInventory" unique_id=1553530262 instance=ExtResource("6_wb0u6")]
+layout_mode = 2
+
+[node name="InventorySlot9" parent="InventoryUI/VBoxContainer/ExpandedInventory" unique_id=557782148 instance=ExtResource("6_wb0u6")]
+layout_mode = 2
+
+[node name="InventorySlot10" parent="InventoryUI/VBoxContainer/ExpandedInventory" unique_id=1544868914 instance=ExtResource("6_wb0u6")]
+layout_mode = 2
+
+[node name="InventorySlot11" parent="InventoryUI/VBoxContainer/ExpandedInventory" unique_id=1146595512 instance=ExtResource("6_wb0u6")]
+layout_mode = 2
+
+[node name="InventorySlot12" parent="InventoryUI/VBoxContainer/ExpandedInventory" unique_id=314400935 instance=ExtResource("6_wb0u6")]
+layout_mode = 2
+
+[node name="InventorySlot13" parent="InventoryUI/VBoxContainer/ExpandedInventory" unique_id=269315631 instance=ExtResource("6_wb0u6")]
+layout_mode = 2
+
+[node name="InventorySlot14" parent="InventoryUI/VBoxContainer/ExpandedInventory" unique_id=659240714 instance=ExtResource("6_wb0u6")]
+layout_mode = 2
+
+[node name="InventorySlot15" parent="InventoryUI/VBoxContainer/ExpandedInventory" unique_id=1776862187 instance=ExtResource("6_wb0u6")]
+layout_mode = 2
+
+[node name="InventorySlot16" parent="InventoryUI/VBoxContainer/ExpandedInventory" unique_id=199957625 instance=ExtResource("6_wb0u6")]
+layout_mode = 2
+
+[node name="InventorySlot17" parent="InventoryUI/VBoxContainer/ExpandedInventory" unique_id=1640087208 instance=ExtResource("6_wb0u6")]
+layout_mode = 2
+
+[node name="InventorySlot18" parent="InventoryUI/VBoxContainer/ExpandedInventory" unique_id=1111378117 instance=ExtResource("6_wb0u6")]
+layout_mode = 2
