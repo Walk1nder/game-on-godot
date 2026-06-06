@@ -115,10 +115,10 @@ metadata/_edit_use_anchors_ = true
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -426.0
-offset_top = 44.0
+offset_left = -406.0
+offset_top = 42.0
 offset_right = -2.0
-offset_bottom = 128.0
+offset_bottom = 126.0
 grow_horizontal = 0
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
@@ -126,32 +126,58 @@ script = ExtResource("6_ywvr4")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="InventoryUI" unique_id=973752502]
 layout_mode = 2
+theme_override_constants/separation = 0
 
 [node name="HotbarGrid" type="GridContainer" parent="InventoryUI/VBoxContainer" unique_id=1135736405]
+custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
 columns = 6
 
 [node name="InventorySlot" parent="InventoryUI/VBoxContainer/HotbarGrid" unique_id=1629542194 instance=ExtResource("6_wb0u6")]
 layout_mode = 2
+ignore_texture_size = true
 
 [node name="InventorySlot2" parent="InventoryUI/VBoxContainer/HotbarGrid" unique_id=1194332883 instance=ExtResource("6_wb0u6")]
+custom_minimum_size = Vector2(64, 63.465)
 layout_mode = 2
+ignore_texture_size = true
+stretch_mode = 1
+slot_index = 1
 
 [node name="InventorySlot3" parent="InventoryUI/VBoxContainer/HotbarGrid" unique_id=2008944584 instance=ExtResource("6_wb0u6")]
+custom_minimum_size = Vector2(64, 50.745)
 layout_mode = 2
+ignore_texture_size = true
+stretch_mode = 5
+slot_index = 2
 
 [node name="InventorySlot4" parent="InventoryUI/VBoxContainer/HotbarGrid" unique_id=174915576 instance=ExtResource("6_wb0u6")]
+custom_minimum_size = Vector2(64, 50.745)
 layout_mode = 2
+ignore_texture_size = true
+stretch_mode = 5
+slot_index = 3
 
 [node name="InventorySlot5" parent="InventoryUI/VBoxContainer/HotbarGrid" unique_id=1748644465 instance=ExtResource("6_wb0u6")]
+custom_minimum_size = Vector2(64, 48.295)
 layout_mode = 2
+ignore_texture_size = true
+stretch_mode = 5
+slot_index = 4
 
 [node name="InventorySlot6" parent="InventoryUI/VBoxContainer/HotbarGrid" unique_id=1737233369 instance=ExtResource("6_wb0u6")]
 layout_mode = 2
+ignore_texture_size = true
+stretch_mode = 5
+slot_index = 5
 
 [node name="ExpandedInventory" type="GridContainer" parent="InventoryUI/VBoxContainer" unique_id=392561276]
 visible = false
 layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
 columns = 6
 
 [node name="InventorySlot" parent="InventoryUI/VBoxContainer/ExpandedInventory" unique_id=896588022 instance=ExtResource("6_wb0u6")]
@@ -207,3 +233,60 @@ layout_mode = 2
 
 [node name="InventorySlot18" parent="InventoryUI/VBoxContainer/ExpandedInventory" unique_id=1111378117 instance=ExtResource("6_wb0u6")]
 layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="InventoryUI" unique_id=1044013132]
+
+[node name="ChestUI" type="GridContainer" parent="." unique_id=1616804120]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 3
+
+[node name="InventorySlot" parent="ChestUI" unique_id=1455353664 instance=ExtResource("6_wb0u6")]
+layout_mode = 2
+is_chest_slot = true
+
+[node name="InventorySlot2" parent="ChestUI" unique_id=1709099325 instance=ExtResource("6_wb0u6")]
+layout_mode = 2
+is_chest_slot = true
+
+[node name="InventorySlot3" parent="ChestUI" unique_id=376531687 instance=ExtResource("6_wb0u6")]
+layout_mode = 2
+is_chest_slot = true
+
+[node name="InventorySlot4" parent="ChestUI" unique_id=636013538 instance=ExtResource("6_wb0u6")]
+layout_mode = 2
+is_chest_slot = true
+
+[node name="InventorySlot5" parent="ChestUI" unique_id=1540716389 instance=ExtResource("6_wb0u6")]
+layout_mode = 2
+is_chest_slot = true
+
+[node name="InventorySlot6" parent="ChestUI" unique_id=828897275 instance=ExtResource("6_wb0u6")]
+layout_mode = 2
+is_chest_slot = true
+
+[node name="InventorySlot7" parent="ChestUI" unique_id=379797925 instance=ExtResource("6_wb0u6")]
+layout_mode = 2
+is_chest_slot = true
+
+[node name="InventorySlot8" parent="ChestUI" unique_id=2041200612 instance=ExtResource("6_wb0u6")]
+layout_mode = 2
+is_chest_slot = true
+
+[node name="InventorySlot9" parent="ChestUI" unique_id=246783392 instance=ExtResource("6_wb0u6")]
+layout_mode = 2
+is_chest_slot = true

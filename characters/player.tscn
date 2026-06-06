@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://b0xbhytsfd04s" path="res://assets/Shinobi/Run.png" id="9_lcfw7"]
 [ext_resource type="Texture2D" uid="uid://clmc4giub01ff" path="res://assets/Shinobi/Walk.png" id="11_eho78"]
 [ext_resource type="PackedScene" uid="uid://jju1j3l1hr5i" path="res://scenes/DamageBox.tscn" id="12_8sqrr"]
+[ext_resource type="PackedScene" uid="uid://cebh7evjx8bxo" path="res://scenes/UI/interface.tscn" id="13_6rrl0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sh265"]
 radius = 19.0
@@ -876,11 +877,15 @@ height = 64.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hsn1j"]
 
-[node name="player" type="CharacterBody2D" unique_id=621955716 groups=["player"]]
+[node name="player" type="CharacterBody2D" unique_id=621955716 node_paths=PackedStringArray("hotbar_grid", "expanded_inventory", "chest_ui") groups=["player"]]
 collision_layer = 2
+collision_mask = 9
 floor_max_angle = 1.0471976
 floor_snap_length = 8.0
 script = ExtResource("1_q605b")
+hotbar_grid = NodePath("Interface/InventoryUI/VBoxContainer/HotbarGrid")
+expanded_inventory = NodePath("Interface/InventoryUI/VBoxContainer/ExpandedInventory")
+chest_ui = NodePath("Interface/ChestUI")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1593452852]
 visible = false
@@ -929,6 +934,9 @@ collision_mask = 32
 position = Vector2(6, -2)
 shape = SubResource("RectangleShape2D_hsn1j")
 
+[node name="Interface" parent="." unique_id=60560458 instance=ExtResource("13_6rrl0")]
+
 [connection signal="area_entered" from="AttackDirection/damagebox/HitBox" to="." method="_on_hit_box_area_entered"]
 
 [editable path="AttackDirection/damagebox"]
+[editable path="Interface"]

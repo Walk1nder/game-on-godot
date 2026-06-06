@@ -1,14 +1,25 @@
 [gd_scene format=3 uid="uid://dok4gycwcn350"]
 
-[ext_resource type="Texture2D" uid="uid://cr5uqkk467msn" path="res://assets.textures/CrimsonFantasyGU_fixed/CrimsonFantasyGUI/Manabar1.png" id="1_dxvxp"]
+[ext_resource type="Script" uid="uid://d2ylb04j5okva" path="res://scenes/inventory_slot.gd" id="1_bxqf6"]
 
-[node name="InventorySlot" type="TextureRect" unique_id=1629542194]
+[node name="InventorySlot" type="TextureButton" unique_id=1455353664]
 custom_minimum_size = Vector2(64, 64)
 anchors_preset = -1
 anchor_right = 0.056
 anchor_bottom = 0.09900001
-offset_right = -64.512
-offset_bottom = -64.15201
+offset_right = -0.51200104
+offset_bottom = -0.15200806
+script = ExtResource("1_bxqf6")
+
+[node name="SlotBackground" type="TextureRect" parent="." unique_id=1311542110]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
 
 [node name="ItemIcon" type="TextureRect" parent="." unique_id=2019888483]
 custom_minimum_size = Vector2(64, 64)
@@ -18,19 +29,34 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_dxvxp")
+mouse_filter = 2
 expand_mode = 1
+stretch_mode = 5
 
 [node name="AmountLabel" type="Label" parent="." unique_id=525407034]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 17.954
 anchor_bottom = 9.988001
-offset_left = 48.0
-offset_top = 38.0
-offset_right = -1085.056
-offset_bottom = -564.23206
+offset_left = 54.0
+offset_top = 42.0
+offset_right = -1079.056
+offset_bottom = -560.23206
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 27
-text = "5"
+text = "1"
+
+[node name="HotkeyLabel" type="Label" parent="." unique_id=712582470]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.062000003
+anchor_top = -0.062000003
+anchor_right = 0.266
+anchor_bottom = 0.437
+offset_left = -8.968
+offset_top = -8.032
+offset_right = -9.024
+offset_bottom = -7.9680004
+theme_override_font_sizes/font_size = 23
+text = "1"

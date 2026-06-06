@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bhg6nn56ls36h"]
+
+[ext_resource type="Script" uid="uid://brsut1dfje8i1" path="res://pickable_item.gd" id="1_shxxu"]
+[ext_resource type="Resource" uid="uid://bv4f2sesu120o" path="res://health_potion.tres" id="2_udnc7"]
+[ext_resource type="Texture2D" uid="uid://bbj3h6qmg4xdl" path="res://assets.textures/gui1/PSD/хилка маленькая.png" id="3_i88i5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_whiq4"]
+size = Vector2(10, 13)
+
+[node name="PickableItem" type="Area2D" unique_id=1195295192]
+script = ExtResource("1_shxxu")
+item_data = ExtResource("2_udnc7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=469049634]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_whiq4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1757715654]
+modulate = Color(0.8583027, 1, 0.902173, 1)
+texture = ExtResource("3_i88i5")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

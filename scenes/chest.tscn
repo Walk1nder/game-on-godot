@@ -1,0 +1,164 @@
+[gd_scene format=3 uid="uid://cqovcbqpfkxy"]
+
+[ext_resource type="Texture2D" uid="uid://u2fhkmalaba" path="res://свалка/Pixel Art Platformer - Village Props v2.3.0/Texture/TX Chest Animation.png" id="1_oii8l"]
+[ext_resource type="Script" uid="uid://cntogtiuht38" path="res://scenes/chest.gd" id="1_sy5e1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sy5e1"]
+radius = 42.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8me8i"]
+atlas = ExtResource("1_oii8l")
+region = Rect2(14, 2, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfymr"]
+atlas = ExtResource("1_oii8l")
+region = Rect2(14, 2, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udamv"]
+atlas = ExtResource("1_oii8l")
+region = Rect2(78, 2, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_up8i7"]
+atlas = ExtResource("1_oii8l")
+region = Rect2(142, 2, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nnvde"]
+atlas = ExtResource("1_oii8l")
+region = Rect2(206, 2, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sj8sc"]
+atlas = ExtResource("1_oii8l")
+region = Rect2(270, 2, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_euan8"]
+atlas = ExtResource("1_oii8l")
+region = Rect2(334, 2, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5oag"]
+atlas = ExtResource("1_oii8l")
+region = Rect2(398, 2, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0xutf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8me8i")
+}],
+"loop": false,
+"name": &"closed",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lfymr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udamv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_up8i7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nnvde")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sj8sc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_euan8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5oag")
+}],
+"loop": false,
+"name": &"open",
+"speed": 12.0
+}]
+
+[sub_resource type="Animation" id="Animation_gqd3d"]
+length = 0.083333336
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["closed"]
+}
+
+[sub_resource type="Animation" id="Animation_yue2o"]
+length = 0.5833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.083333336, 0.16666667, 0.25, 0.33333334, 0.41666666, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["open"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yhylo"]
+_data = {
+&"closed": SubResource("Animation_gqd3d"),
+&"open": SubResource("Animation_yue2o")
+}
+
+[node name="Chest" type="Area2D" unique_id=1521754087]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_sy5e1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=428589254]
+position = Vector2(2, 19)
+shape = SubResource("CircleShape2D_sy5e1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=401018966]
+scale = Vector2(1.375, 1.375)
+sprite_frames = SubResource("SpriteFrames_0xutf")
+animation = &"closed"
+autoplay = "closed"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1953163908]
+libraries/ = SubResource("AnimationLibrary_yhylo")
+
+[node name="Label" type="Label" parent="." unique_id=809500749]
+offset_left = -8.0
+offset_top = -32.0
+offset_right = 12.0
+offset_bottom = -8.0
+text = "[E]"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
