@@ -83,6 +83,7 @@
 [ext_resource type="PackedScene" uid="uid://c2esjfbpe3hvw" path="res://Mobs/satyr.tscn" id="78_h2qgp"]
 [ext_resource type="PackedScene" uid="uid://55nvsqrxu8s3" path="res://scenes_objects/rope.tscn" id="82_7chc5"]
 [ext_resource type="PackedScene" uid="uid://cqovcbqpfkxy" path="res://scenes/chest.tscn" id="83_xry3a"]
+[ext_resource type="Script" uid="uid://bxakx0ajioco8" path="res://scenes/tester.gd" id="84_r3irg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sfxkp"]
 resource_name = "cave_back"
@@ -12036,6 +12037,9 @@ scale = Vector2(1.06252, 1.1265824)
 
 [node name="Chest" parent="objects" unique_id=1521754087 instance=ExtResource("83_xry3a")]
 position = Vector2(3702, 1774)
+
+[node name="Node" type="Node" parent="." unique_id=392038705]
+script = ExtResource("84_r3irg")
 
 [connection signal="lever_activated" from="objects/lever" to="objects/door" method="_on_lever_lever_activated"]
 

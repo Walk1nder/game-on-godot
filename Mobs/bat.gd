@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-
 enum {
 	sleep,
 	wake_up,
