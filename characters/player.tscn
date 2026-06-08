@@ -888,7 +888,7 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.9, 0.5)
 
-[node name="player" type="CharacterBody2D" unique_id=621955716 node_paths=PackedStringArray("hotbar_grid", "expanded_inventory", "chest_ui") groups=["player"]]
+[node name="player" type="CharacterBody2D" unique_id=621955716 node_paths=PackedStringArray("hotbar_grid", "expanded_inventory", "chest_ui", "dialog_ui") groups=["player"]]
 collision_layer = 2
 collision_mask = 9
 floor_max_angle = 1.0471976
@@ -897,6 +897,7 @@ script = ExtResource("1_q605b")
 hotbar_grid = NodePath("Interface/InventoryUI/VBoxContainer/HotbarGrid")
 expanded_inventory = NodePath("Interface/InventoryUI/VBoxContainer/ExpandedInventory")
 chest_ui = NodePath("Interface/ChestUI")
+dialog_ui = NodePath("Interface/DialogUI")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1593452852]
 visible = false

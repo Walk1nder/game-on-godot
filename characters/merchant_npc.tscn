@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://dv2eupfjpr8sm"]
+
+[ext_resource type="Script" uid="uid://cooqbct7lky2e" path="res://merchant_npc.gd" id="1_fyt8h"]
+[ext_resource type="Texture2D" uid="uid://qlfey7kx6drk" path="res://assets/Golems_Free_Version/Golems_Free_Version/Golem_1/Blue/No_Swoosh_VFX/Golem_1_idle.png" id="2_nre5x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qofb1"]
+atlas = ExtResource("2_nre5x")
+region = Rect2(0, 0, 90, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1dl2p"]
+atlas = ExtResource("2_nre5x")
+region = Rect2(90, 0, 90, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdjjd"]
+atlas = ExtResource("2_nre5x")
+region = Rect2(180, 0, 90, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ipdub"]
+atlas = ExtResource("2_nre5x")
+region = Rect2(270, 0, 90, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8rdi"]
+atlas = ExtResource("2_nre5x")
+region = Rect2(360, 0, 90, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qiiwr"]
+atlas = ExtResource("2_nre5x")
+region = Rect2(450, 0, 90, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5acwk"]
+atlas = ExtResource("2_nre5x")
+region = Rect2(540, 0, 90, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kp3jj"]
+atlas = ExtResource("2_nre5x")
+region = Rect2(630, 0, 90, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_husy4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qofb1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1dl2p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xdjjd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ipdub")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j8rdi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qiiwr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5acwk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kp3jj")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v58nj"]
+radius = 38.0
+height = 76.0
+
+[node name="MerchantNPC" type="CharacterBody2D" unique_id=480471449]
+script = ExtResource("1_fyt8h")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1453504617]
+position = Vector2(2, -18)
+scale = Vector2(1.453125, 1.453125)
+sprite_frames = SubResource("SpriteFrames_husy4")
+animation = &"idle"
+autoplay = "idle"
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=277198331]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=325784203]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1046328131]
+position = Vector2(4, 3)
+shape = SubResource("CapsuleShape2D_v58nj")
+
+[node name="Label" type="Label" parent="." unique_id=227986486]
+visible = false
+offset_left = -8.0
+offset_top = -60.0
+offset_right = 12.0
+offset_bottom = -31.0
+text = "[E]"
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

@@ -15,12 +15,15 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 const SPEED = 120.0
 const JUMP_VELOCITY = -400.0
 
+@onready var is_in_dialog = false
+
 @onready var anim = $AnimatedSprite2D
 @onready var anim_player = $AnimationPlayer
 @onready var hitbox = $AttackDirection/damagebox/HitBox
 @export var hotbar_grid: Control 
 @export var expanded_inventory: Control
 @export var chest_ui: Control
+@export var dialog_ui: Control
 @export var max_health: int = 100
 @export var health_bar: TextureProgressBar
 @onready var light = $PointLight2D
@@ -36,6 +39,8 @@ var cooldown = false
 var player_pos
 var inventory: Array = []
 var ui_slots: Array = []
+
+
 
 func _ready():
 	add_to_group("dynamic_lights")
@@ -78,6 +83,11 @@ func _physics_process(delta):
 		
 	move_and_slide()
 
+	if is_in_dialog:
+		velocity.x = 0
+		move_and_slide()
+		return
+	
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		state = jump
@@ -219,7 +229,12 @@ func take_damage(damage):
 
 func death_state():
 	state = death
- 
+ 	
+	if dialog_ui.visible:
+		dialog_ui.visible = false
+
+	is_in_dialog = false
+	
 	set_physics_process(false) 
 	velocity = Vector2.ZERO 
  
@@ -328,3 +343,15 @@ func turn_light_on():
 
 func turn_light_off():
 	light.visible = false
+
+func open_dialog():
+	is_in_dialog = true
+	dialog_ui.visible = true
+	set_process_input(false)
+	set_physics_process(false)
+
+func close_dialog():
+	is_in_dialog = false
+	dialog_ui.visible = false
+	set_process_input(true)
+	set_physics_process(true)

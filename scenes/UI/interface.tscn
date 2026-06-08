@@ -7,6 +7,35 @@
 [ext_resource type="Texture2D" uid="uid://cr5uqkk467msn" path="res://assets.textures/CrimsonFantasyGU_fixed/CrimsonFantasyGUI/Manabar1.png" id="4_wb0u6"]
 [ext_resource type="PackedScene" uid="uid://dok4gycwcn350" path="res://scenes/inventory_slot.tscn" id="6_wb0u6"]
 [ext_resource type="Script" uid="uid://ipgpv4mo5sgv" path="res://scenes/UI/inventory_ui.gd" id="6_ywvr4"]
+[ext_resource type="Script" uid="uid://cprp0alh2n1g5" path="res://scenes/UI/dialog_ui.gd" id="8_eepux"]
+[ext_resource type="Texture2D" uid="uid://flk887qgtntq" path="res://assets.textures/CrimsonFantasyGU_fixed/CrimsonFantasyGUI/DialogWindow.png" id="9_rhs8r"]
+[ext_resource type="FontFile" uid="uid://cpun8x5lhtbp1" path="res://fonts/GUI/EpilepsySansBold.ttf" id="11_rhs8r"]
+[ext_resource type="Texture2D" uid="uid://brqc0y4w0gmas" path="res://assets.textures/CrimsonFantasyGU_fixed/CrimsonFantasyGUI/button.png" id="11_ynocm"]
+[ext_resource type="Texture2D" uid="uid://dwjly72v7ysfj" path="res://assets.textures/CrimsonFantasyGU_fixed/CrimsonFantasyGUI/button_pressed.png" id="12_ynocm"]
+[ext_resource type="Texture2D" uid="uid://cna47ig204umi" path="res://assets.textures/CrimsonFantasyGU_fixed/CrimsonFantasyGUI/button_look.png" id="13_36ado"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_36ado"]
+texture = ExtResource("11_ynocm")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l4u2p"]
+texture = ExtResource("12_ynocm")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_et74a"]
+texture = ExtResource("13_36ado")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2ioyr"]
+texture = ExtResource("11_ynocm")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ni2ra"]
+texture = ExtResource("12_ynocm")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jqiee"]
+texture = ExtResource("11_ynocm")
+
+[sub_resource type="LabelSettings" id="LabelSettings_2ioyr"]
+font = ExtResource("11_rhs8r")
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Interface" type="CanvasLayer" unique_id=60560458]
 
@@ -239,7 +268,6 @@ layout_mode = 2
 [node name="Sprite2D" type="Sprite2D" parent="InventoryUI" unique_id=1044013132]
 
 [node name="ChestUI" type="GridContainer" parent="." unique_id=1616804120]
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -292,3 +320,85 @@ is_chest_slot = true
 [node name="InventorySlot9" parent="ChestUI" unique_id=246783392 instance=ExtResource("6_wb0u6")]
 layout_mode = 2
 is_chest_slot = true
+
+[node name="DialogUI" type="Control" parent="." unique_id=172412453]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 281.0
+offset_top = 4.0
+offset_right = 321.0
+offset_bottom = 44.0
+script = ExtResource("8_eepux")
+
+[node name="DialogWindow" type="TextureRect" parent="DialogUI" unique_id=1048505748]
+layout_mode = 0
+offset_left = -281.0
+offset_top = 477.0
+offset_right = 873.0
+offset_bottom = 664.0
+texture = ExtResource("9_rhs8r")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DialogUI/DialogWindow" unique_id=890480741]
+layout_mode = 0
+offset_left = 377.0
+offset_top = 45.0
+offset_right = 778.0
+offset_bottom = 202.0
+
+[node name="btn_shop" type="Button" parent="DialogUI/DialogWindow/VBoxContainer" unique_id=1875170062]
+custom_minimum_size = Vector2(200, 29)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("11_rhs8r")
+theme_override_styles/normal = SubResource("StyleBoxTexture_36ado")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_l4u2p")
+theme_override_styles/hover = SubResource("StyleBoxTexture_et74a")
+text = "Торговаться
+"
+
+[node name="btn_dialog" type="Button" parent="DialogUI/DialogWindow/VBoxContainer" unique_id=555001317]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("11_rhs8r")
+theme_override_styles/normal = SubResource("StyleBoxTexture_2ioyr")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ni2ra")
+theme_override_styles/hover = SubResource("StyleBoxTexture_et74a")
+text = "Расскажи о себе"
+
+[node name="btn_back" type="Button" parent="DialogUI/DialogWindow/VBoxContainer" unique_id=1592366804]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("11_rhs8r")
+theme_override_styles/normal = SubResource("StyleBoxTexture_jqiee")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ni2ra")
+theme_override_styles/hover = SubResource("StyleBoxTexture_et74a")
+text = "Вернуться"
+
+[node name="Label" type="Label" parent="DialogUI" unique_id=215233098]
+visible = false
+layout_mode = 0
+offset_left = -195.0
+offset_top = 527.0
+offset_right = 814.0
+offset_bottom = 615.0
+label_settings = SubResource("LabelSettings_2ioyr")
+autowrap_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="DialogUI" unique_id=1244249101]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="gui_input" from="DialogUI" to="DialogUI" method="_on_gui_input"]
+[connection signal="pressed" from="DialogUI/DialogWindow/VBoxContainer/btn_shop" to="DialogUI" method="_on_btn_shop_pressed"]
+[connection signal="pressed" from="DialogUI/DialogWindow/VBoxContainer/btn_dialog" to="DialogUI" method="_on_btn_dialog_pressed"]
+[connection signal="pressed" from="DialogUI/DialogWindow/VBoxContainer/btn_back" to="DialogUI" method="_on_btn_back_pressed"]

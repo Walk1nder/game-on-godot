@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cq033wm0go1cc"]
+
+[node name="NPCDialog" type="Node2D" unique_id=1053836050]
+
+[node name="Panel" type="Panel" parent="." unique_id=178079268]
+offset_left = 364.0
+offset_top = 47.0
+offset_right = 767.0
+offset_bottom = 599.0
+
+[node name="Label" type="Label" parent="." unique_id=416872257]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Магазин" type="Button" parent="." unique_id=215552204]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Расскажи о себе" type="Button" parent="." unique_id=1212190342]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Вернуться" type="Button" parent="." unique_id=353552085]
+offset_right = 8.0
+offset_bottom = 8.0
