@@ -10,14 +10,12 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		player_in_range = true
 		$Label.show()
-		print("Кто-то вошёл:", body.name)
 
 
 func _on_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		player_in_range = false
 		$Label.hide()
-		print("Кто-то вышел:", body.name)
 		
 func _process(delta):
 	if activated:

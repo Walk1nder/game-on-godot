@@ -3,7 +3,7 @@ extends CharacterBody2D
 enum {
 	IDLE,
 	CHASE,
-	DEATH # 1. Добавили новое состояние смерти
+	DEATH 
 }
 
 @export var arrow_scene: PackedScene 
@@ -21,17 +21,14 @@ var direction: Vector2
 
 var state: int = IDLE       
 
-# 2. Добавили здоровье лучнику
-var health: int = 120 # Можешь изменить значение
+var health: int = 120
 
 func _ready():
 	animPlayer.play("idle")
-	print("Лучник появился, запущен idle")
 	Signals.player_position_update.connect(Callable(self, "_on_player_position_update"))
 	
 
 func _physics_process(_delta):
-	# 3. Если мертв - выходим из функции, чтобы он перестал ходить и стрелять
 	if state == DEATH:
 		return
 
@@ -53,7 +50,6 @@ func _on_player_position_update(player_pos):
 func start_attack():
 	is_attacking = true
 	animPlayer.play("attack") 
-	print("Начата анимация атаки!")
 
 func fire_arrow():
 	if arrow_scene and target_player:
@@ -65,37 +61,31 @@ func fire_arrow():
 		get_tree().current_scene.add_child(arrow)
 
 func _on_detection_area_body_entered(body):
-	print("В зону вошел: ", body.name)
 	if body.is_in_group("player"): 
 		player_in_range = true
 		target_player = body
-		print("Это игрок! Начинаем стрельбу.")
 		state = CHASE
 
 func _on_detection_area_body_exited(body):
 	if body.is_in_group("player"):
 		player_in_range = false
 		target_player = null
-		print("Игрок ушел из зоны!")
 		state = IDLE
 
 func _on_animation_player_animation_finished(anim_name):
-	# Не запускаем таймеры и не меняем состояния, если лучник уже умирает
 	if state == DEATH:
 		return
 
 	if anim_name == "attack":
 		is_attacking = false
 		cooldown_timer.start() 
-		print("Анимация атаки закончилась")
 
 		if not player_in_range:
 			animPlayer.play("idle") 
-			print("Возвращаемся в idle")
 	elif anim_name == "hurt":
-		is_attacking = false # Сбрасываем атаку, если его ударили во время выстрела
+		is_attacking = false 
 		if player_in_range:
-			animPlayer.play("idle") # Возвращаем в стойку
+			animPlayer.play("idle") 
 		else:
 			animPlayer.play("idle")
 
@@ -108,42 +98,30 @@ func chase_state():
 			sprite.flip_h = false
 
 
-# 4. Функция получения урона (вызовешь её через сигнал HurtBox)
 func take_damage(damage_amount):
-	# Если уже мертв - игнорируем новые удары
 	if state == DEATH:
 		return
 	health -= damage_amount
-	print("Лучник получил урон! Осталось: ", health)
 	if health <= 0:
 		health = 0
 		die()
 	else:
 		animPlayer.stop()
 		animPlayer.play("hurt")
-# 5. Функция смерти
 func die():
 	state = DEATH
-	set_physics_process(false) # Останавливаем движение навсегда
-	cooldown_timer.stop() # Останавливаем таймер, чтобы он не выстрелил из могилы
-	is_attacking = false # Прерываем атаку
+	set_physics_process(false) 
+	cooldown_timer.stop() 
+	is_attacking = false 
 	
-	animPlayer.play("death") # Запускаем анимацию смерти
-	await animPlayer.animation_finished # Ждем конца анимации
+	animPlayer.play("death") 
+	await animPlayer.animation_finished 
 	
-	queue_free() # Удаляем лучника с уровня (здесь это безопасно, так как мы не меняем сцену)
+	queue_free() 
 
 
 func _on_hurt_box_area_entered(area):
-	print("Что-то коснулось лучника: ", area.name)
-# area.owner — это главный узел сцены (твоего Игрока), на котором висит скрипт Игрока
 	var attacker = area.owner
-  
-  # Проверяем, существует ли attacker и есть ли внутри его скрипта переменная 'damage_amount'
 	if attacker != null and "damage_amount" in attacker:
-	# Берем урон прямо из скрипта твоего Игрока!
 		take_damage(attacker.damage_amount)
 	
-  # Резервная проверка (если структура сцены чуть другая, сработает по слову damagebox или hitbox)
-#	elif "damagebox" in str(area.name).to_lower() or "hitbox" in str(area.name).to_lower():
-#		take_damage(20)

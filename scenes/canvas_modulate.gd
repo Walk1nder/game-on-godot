@@ -10,7 +10,6 @@ var timer: Timer
 
 func _ready():
  self.color = day_color
- # При старте ставим фону дневной цвет
  get_tree().call_group("ParallaxBackground", "set_modulate", day_color)
  
  timer = Timer.new()
@@ -27,16 +26,12 @@ func _on_timer_timeout():
  var tween = create_tween()
  tween.set_parallel(true)
  
- # Затемняем основную сцену
  tween.tween_property(self, "color", target_color, transition_time)
  
- # Затемняем ВСЕ ноды в группе "background" (наш параллакс фон)
  var bgs = get_tree().get_nodes_in_group("ParallaxBackground")
  for bg in bgs:
-  # У ParallaxBackground нет своего цвета, но мы затеняем его дочерние элементы
   tween.tween_property(bg, "modulate", target_color, transition_time)
  
- # Включаем/выключаем свет на игроке и мобах
  if is_day:
   get_tree().call_group("dynamic_lights", "turn_light_off")
  else:

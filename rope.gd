@@ -12,8 +12,6 @@ func _process(_delta):
 	var length = platform.global_position.y - anchor.global_position.y
 	length = max(length, 0)
 
-	# растягиваем
 	sprite.scale.y = length / sprite.texture.get_height()
 
-	# ВАЖНО: фиксируем верх верёвки
 	sprite.global_position = anchor.global_position
