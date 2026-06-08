@@ -23,7 +23,7 @@ const JUMP_VELOCITY = -400.0
 @export var chest_ui: Control
 @export var max_health: int = 100
 @export var health_bar: TextureProgressBar
-
+@onready var light = $PointLight2D
 
 var active_chest: Area2D = null
 var damage_amount = 10
@@ -39,7 +39,8 @@ var ui_slots: Array = []
 
 func _ready():
 	print("🚀🚀🚀 СКРИПТ ИГРОКА ЖИВ И РАБОТАЕТ! 🚀🚀🚀")
- 
+	add_to_group("dynamic_lights")
+	light.visible = false
  # 1. СНАЧАЛА забираем сохраненное здоровье с прошлой локации
 	current_health = Global.player_health
  
@@ -389,7 +390,11 @@ func swap_items(drag_data: Dictionary, drop_data: Dictionary):
 func update_inventory_ui():
 	for i in range(inventory.size()):
 		update_ui_slot(i)
-	
+func turn_light_on():
+	light.visible = true
+
+func turn_light_off():
+	light.visible = false
 # 2. Функция для теста по кнопке
 #func _input(event):
 #		take_damage(15) # Вот теперь движок найдет эту команду!

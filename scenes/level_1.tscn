@@ -75,6 +75,7 @@
 [ext_resource type="PackedScene" uid="uid://bh2ajedi1bvgg" path="res://Mobs/mushroom.tscn" id="71_asvak"]
 [ext_resource type="Script" uid="uid://c6cab038ehkrb" path="res://scenes/level_transition.gd" id="75_5gq73"]
 [ext_resource type="Texture2D" uid="uid://beygtnl8bo1c" path="res://assets.textures/CrimsonFantasyGU_fixed/CrimsonFantasyGUI/myinventory.png" id="75_uuude"]
+[ext_resource type="Script" uid="uid://bk0bwm5rrslad" path="res://scenes/canvas_modulate.gd" id="76_uuude"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ac6pt"]
 resource_name = "cave_back"
@@ -11113,6 +11114,9 @@ z_index = -1
 position = Vector2(167.24866, 45.499992)
 scale = Vector2(3.6062186, 3.0277774)
 texture = ExtResource("75_uuude")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=484360691]
+script = ExtResource("76_uuude")
 
 [connection signal="body_entered" from="LevelTransition" to="LevelTransition" method="_on_body_entered"]
 
