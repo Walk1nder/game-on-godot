@@ -1,7 +1,9 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bv4f2sesu120o"]
 
-[ext_resource type="Script" uid="uid://ba4xmjrorbwbc" path="res://ItemData.gd" id="1_32gub"]
+[ext_resource type="Texture2D" uid="uid://bbj3h6qmg4xdl" path="res://assets.textures/gui1/PSD/хилка маленькая.png" id="1_32gub"]
+[ext_resource type="Script" uid="uid://ba4xmjrorbwbc" path="res://ItemData.gd" id="2_e7mrv"]
 
 [resource]
-script = ExtResource("1_32gub")
+script = ExtResource("2_e7mrv")
+icon = ExtResource("1_32gub")
 metadata/_custom_type_script = "uid://ba4xmjrorbwbc"

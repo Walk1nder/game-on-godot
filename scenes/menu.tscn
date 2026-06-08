@@ -20,9 +20,9 @@ script = ExtResource("1_lti8b")
 
 [node name="play_button" type="Button" parent="." unique_id=38831438]
 offset_left = 412.0
-offset_top = 213.0
+offset_top = 131.0
 offset_right = 761.0
-offset_bottom = 302.0
+offset_bottom = 220.0
 theme_override_font_sizes/font_size = 32
 text = "Начать игру"
 
@@ -33,6 +33,14 @@ offset_right = 764.0
 offset_bottom = 548.0
 theme_override_font_sizes/font_size = 32
 text = "Выйти"
+
+[node name="Button" type="Button" parent="." unique_id=1367617844]
+offset_left = 423.0
+offset_top = 291.0
+offset_right = 763.0
+offset_bottom = 380.0
+theme_override_font_sizes/font_size = 32
+text = "Загрузить игру"
 
 [node name="ParallaxBackground" parent="." unique_id=755746550 instance=ExtResource("2_vjb58")]
 

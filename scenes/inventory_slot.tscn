@@ -1,6 +1,13 @@
 [gd_scene format=3 uid="uid://dok4gycwcn350"]
 
 [ext_resource type="Script" uid="uid://d2ylb04j5okva" path="res://scenes/inventory_slot.gd" id="1_bxqf6"]
+[ext_resource type="FontFile" uid="uid://tqw1l6ah7a5j" path="res://fonts/GUI/ByteBounce.ttf" id="2_bxqf6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hddt5"]
+font = ExtResource("2_bxqf6")
+font_size = 32
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 
 [node name="InventorySlot" type="TextureButton" unique_id=1455353664]
 custom_minimum_size = Vector2(64, 64)
@@ -30,7 +37,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-expand_mode = 1
+expand_mode = 3
 stretch_mode = 5
 
 [node name="AmountLabel" type="Label" parent="." unique_id=525407034]
@@ -45,7 +52,6 @@ offset_bottom = -560.23206
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 27
-text = "1"
 
 [node name="HotkeyLabel" type="Label" parent="." unique_id=712582470]
 layout_mode = 1
@@ -60,3 +66,4 @@ offset_right = -9.024
 offset_bottom = -7.9680004
 theme_override_font_sizes/font_size = 23
 text = "1"
+label_settings = SubResource("LabelSettings_hddt5")
